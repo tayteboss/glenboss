@@ -1,12 +1,11 @@
 import Head from 'next/head';
 import styled from 'styled-components';
-import { getHomePage, getSiteData } from '../lib/datocms';
+import { getPartnersPage } from '../../lib/datocms';
 
 const PageWrapper = styled.div``;
 
-const Page = ({ data, siteData }) => {
+const Page = ({ data }) => {
 	console.log('data', data);
-	console.log('siteData', siteData);
 
 	return (
 		<PageWrapper>
@@ -15,13 +14,11 @@ const Page = ({ data, siteData }) => {
 )};
 
 export async function getStaticProps({ params }) {
-	const data = await getHomePage();
-	const siteData = await getSiteData();
+	const data = await getPartnersPage();
 
 	return {
 		props: {
 			data,
-			siteData,
 		},
 	};
 }
