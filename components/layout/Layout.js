@@ -1,19 +1,46 @@
+import { useEffect, useState } from 'react';
+import styled from 'styled-components';
 import Header from './Header';
 import Footer from './Footer';
-import styled from 'styled-components';
+import Menu from './Menu';
+import { useRouter } from 'next/router';
 
-const Main = styled.main``;
+const Main = styled.main`
+	min-height: 150vh;
+	padding-top: var(--header-h);
+`;
 
 const Layout = ({ children }) => {
+	const [menuIsOpen, setMenuIsOpen] = useState(false);
+
+	useEffect(() => {
+		const html = document.querySelector('html');
+
+		if (menuIsOpen) {
+			html.classList.add('no-scroll');
+		} else {
+			html.classList.remove('no-scroll');
+		}
+	}, [menuIsOpen]);
+
+	const router = useRouter();
+	const routerEvents = router.events;
+	useEffect(() => {
+		routerEvents.on('routeChangeComplete', () => setMenuIsOpen(false));
+
+		return () => {
+			routerEvents.off('routeChangeComplete', () => setMenuIsOpen(false));
+		};
+	}, [routerEvents]);
+
 	return (
 		<>
-			<Header />
-			<Main>
-				{ children }
-			</Main>
+			<Header setMenuIsOpen={setMenuIsOpen} menuIsOpen={menuIsOpen} />
+			<Menu isActive={menuIsOpen} />
+			<Main>{children}</Main>
 			<Footer />
 		</>
-	)
+	);
 };
 
 export default Layout;

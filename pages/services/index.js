@@ -5,11 +5,9 @@ import { getServicesPage } from '../../lib/datocms';
 const PageWrapper = styled.div``;
 
 const Page = ({ data }) => {
-	console.log('data', data);
-
 	return (
 		<PageWrapper>
-			Home
+			Services
 		</PageWrapper>
 )};
 

@@ -46,6 +46,10 @@ export const GlobalStyles = createGlobalStyle`
 
 	html {
 		scroll-behavior: smooth;
+
+		&.no-scroll {
+			overflow-y: hidden;
+		}
 	}
 
 	body {
@@ -60,7 +64,7 @@ export const GlobalStyles = createGlobalStyle`
 	label,
 	body {
 		font-family: var(--font-default);
-		color: var(--colour-white);
+		color: var(--colour-black);
 		line-height: 1.4;
 	}
 
@@ -152,7 +156,10 @@ export const GlobalStyles = createGlobalStyle`
 	}
 
 	p,
-	.type-p {
+	.type-p,
+	a,
+	button,
+	div {
 		font-size: ${theme.size.body};
 		line-height: 1.938rem;
 
@@ -164,6 +171,11 @@ export const GlobalStyles = createGlobalStyle`
 		}
 	}
 
+	.type-extra-large {
+		font-size: ${theme.size.extraLarge};
+		line-height: 10rem;
+	}
+
 	.type-sm {
 		font-size: ${theme.size.small};
 		line-height: 1.375rem;
@@ -171,6 +183,36 @@ export const GlobalStyles = createGlobalStyle`
 
 	.type-esm {
 		font-size: ${theme.size.extraSmall};
+	}
+
+	.sm-link-hover {
+		position: relative;
+
+		transition: all var(--transition-speed-default) var(--transition-ease);
+
+		&:hover {
+			transform: translateX(16px);
+
+			&::before {
+				opacity: 1;
+				transform: translateX(-8px);
+			}
+		}
+
+		&::before {
+			content: '';
+			position: absolute;
+			top: 6px;
+			left: -8px;
+			background: ${theme.colours.white};
+			border-radius: 50%;
+			height: 8px;
+			width: 8px;
+			opacity: 0;
+			transform: translateX(8px);
+
+			transition: all var(--transition-speed-default) var(--transition-ease);
+		}
 	}
 
 	::placeholder {

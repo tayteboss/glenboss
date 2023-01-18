@@ -50,10 +50,65 @@ async function fetchAPI(query) {
 
 const getSiteData = async () => {
 	const query = `
-	query Query {
-		siteInformation {
-			menu {
-				links {
+		query Query {
+			siteInformation {
+				menu {
+					links {
+						useInternalLink
+						internalLink {
+							... on ContactPageRecord {
+								pageSeo {
+									title
+									description
+									slug
+								}
+							}
+							... on HomePageRecord {
+								pageSeo {
+									title
+									description
+									slug
+								}
+							}
+							... on PartnersPageRecord {
+								pageSeo {
+									title
+									description
+									slug
+								}
+							}
+							... on ServicesPageRecord {
+								pageSeo {
+									title
+									description
+									slug
+								}
+							}
+							... on ProfilePageRecord {
+								pageSeo {
+									title
+									description
+									slug
+								}
+							}
+						}
+						externalLink
+						linkTitle
+					}
+				}
+				instagramLink
+				twitterLink
+				instagramFeed {
+					useVideo
+					image {
+						url
+						alt
+					}
+					video {
+						url
+					}
+				}
+				footerSecondaryLinks {
 					useInternalLink
 					internalLink {
 						... on ContactPageRecord {
@@ -67,37 +122,10 @@ const getSiteData = async () => {
 					externalLink
 					linkTitle
 				}
+				generalEmail
+				generalPhone
 			}
-			instagramLink
-			twitterLink
-			instagramFeed {
-				useVideo
-				image {
-					url
-					alt
-				}
-				video {
-					url
-				}
-			}
-			footerSecondaryLinks {
-				useInternalLink
-				internalLink {
-					... on ContactPageRecord {
-						pageSeo {
-							title
-							description
-							slug
-						}
-					}
-				}
-				externalLink
-				linkTitle
-			}
-			generalEmail
-			generalPhone
 		}
-	}
 	`;
 	const data = await fetchAPI(query);
 	if (data.length <= 0) {

@@ -1,7 +1,7 @@
 export const theme = {
 	colours: {
-		primaryBlack: '#1A1919',
-		primaryWhite: '#F2F3EF',
+		black: '#1A1919',
+		white: '#F2F3EF',
 		systemWhite: {
 			grey50: '#FEFEFD',
 			grey600: '#DCDDD9',
@@ -67,6 +67,6 @@ export const theme = {
 		fast: '200ms',
 		extraFast: '100ms',
 		slow: '500ms',
-		extraSlow: '100ms',
+		extraSlow: '800ms',
 	},
 };

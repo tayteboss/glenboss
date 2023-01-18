@@ -5,9 +5,6 @@ import { getHomePage, getSiteData } from '../lib/datocms';
 const PageWrapper = styled.div``;
 
 const Page = ({ data, siteData }) => {
-	console.log('data', data);
-	console.log('siteData', siteData);
-
 	return (
 		<PageWrapper>
 			Home
