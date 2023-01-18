@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { useRouter } from 'next/router';
 import Header from './Header';
 import Footer from './Footer';
 import Menu from './Menu';
-import { useRouter } from 'next/router';
 
 const Main = styled.main`
 	min-height: 150vh;

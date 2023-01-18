@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import useScrolled from '../../../hooks/useScrolled';
 import HeaderMenuButton from './HeaderMenuButton';
 import HeaderMenuLinks from './HeaderMenuLinks';
+import useViewportWidth from '../../../hooks/useViewportWidth';
 
 const HeaderMenuWrapper = styled.div`
 	display: flex;
@@ -11,11 +12,12 @@ const HeaderMenuWrapper = styled.div`
 
 const HeaderMenu = ({ data, setMenuIsOpen, menuIsOpen }) => {
 	const hasScrolled = useScrolled(100);
+	const viewportWidth = useViewportWidth();
 
 	return (
 		<HeaderMenuWrapper>
 			<AnimatePresence>
-				{hasScrolled ? (
+				{hasScrolled || viewportWidth === 'mobile' || menuIsOpen ? (
 					<HeaderMenuButton
 						setMenuIsOpen={setMenuIsOpen}
 						menuIsOpen={menuIsOpen}

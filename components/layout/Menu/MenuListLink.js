@@ -1,8 +1,7 @@
 import Link from 'next/link';
 import styled from 'styled-components';
-import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
 import cleanUrl from '../../../utils/cleanUrl';
+import useActiveLink from '../../../hooks/useActiveLink';
 
 const MenuListLinkWrapper = styled.div``;
 
@@ -16,9 +15,13 @@ const ListLink = styled.a`
 	position: relative;
 	transform: ${(props) =>
 		props.$isActive ? 'translateX(50px)' : 'translateX(0)'};
-	display: block;
+	display: inline-block;
 
 	transition: all var(--transition-speed-default) var(--transition-ease);
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		transform: translateX(0);
+	}
 
 	&:hover {
 		color: var(--colour-white);
@@ -36,30 +39,21 @@ const ListLink = styled.a`
 		transform: ${(props) =>
 			props.$isActive ? 'translateX(-50px)' : 'translateX(0)'};
 		opacity: ${(props) => (props.$isActive ? 1 : 0)};
+
+		@media ${(props) => props.theme.mediaBreakpoints.tabletLandscape} {
+			top: 33px;
+		}
+
+		@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+			display: none;
+		}
 	}
 `;
 
 const MenuListLink = ({ data, index }) => {
-	const [activeLink, setActiveLink] = useState('Home');
-
 	const linkUrl = `/${data?.internalLink?.pageSeo[0]?.slug}`;
 	const linkTitle = data?.linkTitle;
-
-	const router = useRouter();
-
-	useEffect(() => {
-		if (router.pathname === '/') {
-			setActiveLink('Home');
-		} else if (router.pathname === '/profile') {
-			setActiveLink('Profile');
-		} else if (router.pathname === '/services') {
-			setActiveLink('Services');
-		} else if (router.pathname === '/partners') {
-			setActiveLink('Partners');
-		} else if (router.pathname === '/Contact') {
-			setActiveLink('Contact');
-		}
-	}, [router]);
+	const activeLink = useActiveLink();
 
 	return (
 		<MenuListLinkWrapper>
@@ -68,7 +62,6 @@ const MenuListLink = ({ data, index }) => {
 					<ListLink
 						className="type-extra-large"
 						$isActive={activeLink === linkTitle}
-						onClick={() => setActiveLink(linkTitle)}
 					>
 						{linkTitle && linkTitle}
 					</ListLink>

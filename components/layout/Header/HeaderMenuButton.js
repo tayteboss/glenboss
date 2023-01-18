@@ -16,6 +16,10 @@ const MenuButton = styled(motion.button)`
 			height: 6px;
 			width: 6px;
 			transform: translate(-1px, 1px);
+
+			@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+				transform: translate(0);
+			}
 		}
 	}
 
@@ -32,6 +36,11 @@ const MenuButton = styled(motion.button)`
 		mix-blend-mode: difference;
 
 		transition: all var(--transition-speed-default) var(--transition-ease);
+
+		@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+			height: 6px;
+			width: 6px;
+		}
 	}
 `;
 

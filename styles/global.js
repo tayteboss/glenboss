@@ -163,7 +163,6 @@ export const GlobalStyles = createGlobalStyle`
 		font-size: ${theme.size.body};
 		line-height: 1.938rem;
 
-
 		@media ${theme.mediaBreakpoints.mobile}
 		{
 			font-size: ${theme.sizeMobile.body};
@@ -174,6 +173,18 @@ export const GlobalStyles = createGlobalStyle`
 	.type-extra-large {
 		font-size: ${theme.size.extraLarge};
 		line-height: 10rem;
+
+		@media ${theme.mediaBreakpoints.tabletLandscape}
+		{
+			font-size: ${theme.sizeTablet.extraLarge};
+			line-height: 1;
+		}
+
+		@media ${theme.mediaBreakpoints.tabletPortrait}
+		{
+			font-size: ${theme.sizeMobile.extraLarge};
+			line-height: 1;
+		}
 	}
 
 	.type-sm {

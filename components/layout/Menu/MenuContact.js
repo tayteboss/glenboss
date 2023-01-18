@@ -6,6 +6,10 @@ const options = require('../../../json/options.json');
 const MenuContactWrapper = styled.div`
 	grid-column: span 6;
 	padding-top: 40vh;
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		display: none;
+	}
 `;
 
 const Title = styled.p`

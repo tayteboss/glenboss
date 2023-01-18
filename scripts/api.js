@@ -91,6 +91,13 @@ const getSiteData = async () => {
 									slug
 								}
 							}
+							... on PageRecord {
+								pageSeo {
+									title
+									description
+									slug
+								}
+							}
 						}
 						externalLink
 						linkTitle
@@ -112,6 +119,41 @@ const getSiteData = async () => {
 					useInternalLink
 					internalLink {
 						... on ContactPageRecord {
+							pageSeo {
+								title
+								description
+								slug
+							}
+						}
+						... on HomePageRecord {
+							pageSeo {
+								title
+								description
+								slug
+							}
+						}
+						... on PartnersPageRecord {
+							pageSeo {
+								title
+								description
+								slug
+							}
+						}
+						... on ServicesPageRecord {
+							pageSeo {
+								title
+								description
+								slug
+							}
+						}
+						... on ProfilePageRecord {
+							pageSeo {
+								title
+								description
+								slug
+							}
+						}
+						... on PageRecord {
 							pageSeo {
 								title
 								description

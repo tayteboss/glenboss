@@ -4,6 +4,7 @@ import InnerWrapper from '../../common/InnerWrapper';
 import Grid from '../../common/Grid';
 import MenuList from './MenuList';
 import MenuContact from './MenuContact';
+import MenuSecondaryLinks from './MenuSecondaryLinks';
 
 const MenuWrapper = styled(motion.div)`
 	z-index: 90;
@@ -23,6 +24,8 @@ const wrapperVariants = {
 		transition: {
 			duration: 0.5,
 			ease: 'easeInOut',
+			delay: 0.5,
+			delayChildren: 0.2,
 		},
 	},
 	visible: {
@@ -68,6 +71,7 @@ const Menu = ({ isActive }) => {
 							<Grid>
 								<MenuContact />
 								<MenuList isActive={isActive} />
+								<MenuSecondaryLinks />
 							</Grid>
 						</InnerWrapper>
 					</MenuInner>

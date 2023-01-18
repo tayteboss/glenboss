@@ -8,6 +8,13 @@ const MenuListWrapper = styled.div`
 	grid-column: span 6;
 	position: relative;
 	height: 100vh;
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		height: auto;
+		padding-top: 20vh;
+		grid-column: 1 / -1;
+		margin-bottom: 32px;
+	}
 `;
 
 const MenuListInner = styled(motion.div)`
@@ -17,11 +24,19 @@ const MenuListInner = styled(motion.div)`
 	top: 0;
 	left: 0;
 	width: 100%;
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		position: relative;
+	}
 `;
 
 const MotionElement = styled(motion.div)`
 	&:first-child {
 		padding-top: 40vh;
+
+		@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+			padding-top: 0;
+		}
 	}
 `;
 
@@ -78,10 +93,7 @@ const MenuList = ({ isActive }) => {
 			>
 				{hasMenuLinks &&
 					menuLinks.map((item, index) => (
-						<MotionElement
-							variants={childVariants}
-							key={index}
-						>
+						<MotionElement variants={childVariants} key={index}>
 							<MenuListLink data={item} key={index} />
 						</MotionElement>
 					))}

@@ -39,7 +39,7 @@ export const theme = {
 		h3: '1.688rem',
 		h2: '2rem',
 		h1: '2.5rem',
-		extraLarge: '8.75em',
+		extraLarge: '5em',
 	},
 	sizeMobile: {
 		extraSmall: '0.75rem',
@@ -49,7 +49,7 @@ export const theme = {
 		h3: '1.375rem',
 		h2: '1.563rem',
 		h1: '1.875rem',
-		extraLarge: '10em',
+		extraLarge: '3.75em',
 	},
 	mediaBreakpoints: {
 		desktop: '(min-width: 1680px)',

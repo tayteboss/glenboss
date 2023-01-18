@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import cleanUrl from '../../../utils/cleanUrl';
+import useActiveLink from '../../../hooks/useActiveLink';
 
 const HeaderMenuLinkOuter = styled(motion.div)`
 	&:not(:last-child) {
@@ -11,7 +12,7 @@ const HeaderMenuLinkOuter = styled(motion.div)`
 
 const HeaderMenuLink = styled.a`
 	text-decoration: none;
-	color: var(--colour-system-white-grey-800);
+	color: ${(props) => props.$isActive ? 'var(--colour-white)' : 'var(--colour-system-white-grey-800)'};
 	margin-bottom: 64px;
 
 	transition: all var(--transition-speed-default) var(--transition-ease);
@@ -40,6 +41,7 @@ const wrapperVariants = {
 
 const HeaderMenuLinks = ({ data }) => {
 	const hasData = data?.length > 0;
+	const activeLink = useActiveLink();
 	if (!hasData) return <></>;
 
 	return data.map((item, index) => (
@@ -51,7 +53,7 @@ const HeaderMenuLinks = ({ data }) => {
 			key={index}
 		>
 			<Link href={cleanUrl(item)} passHref>
-				<HeaderMenuLink>
+				<HeaderMenuLink $isActive={activeLink === item.linkTitle}>
 					{item.linkTitle && item.linkTitle}
 				</HeaderMenuLink>
 			</Link>
