@@ -63,7 +63,7 @@ const wrapperVariants = {
 
 const HeaderMenuButton = ({ setMenuIsOpen, menuIsOpen }) => {
 	return (
-		<HeaderMenuButtonWrapper>
+		<HeaderMenuButtonWrapper className="cursor-link">
 			<AnimatePresence exitBeforeEnter>
 				{menuIsOpen && (
 					<MenuButton

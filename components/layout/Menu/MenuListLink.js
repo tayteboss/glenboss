@@ -60,7 +60,7 @@ const MenuListLink = ({ data, index }) => {
 			{linkUrl && (
 				<Link href={cleanUrl(data)} passHref>
 					<ListLink
-						className="type-extra-large"
+						className="type-extra-large cursor-large-link"
 						$isActive={activeLink === linkTitle}
 					>
 						{linkTitle && linkTitle}

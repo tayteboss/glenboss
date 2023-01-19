@@ -25,6 +25,35 @@ export const GlobalStyles = createGlobalStyle`
 		--transition-ease: cubic-bezier(0.65, 0, 0.35, 1);
 	}
 
+
+	body,
+	html,
+	#root
+	{
+		cursor: none;
+
+		@media ${theme.mediaBreakpoints.mobile}
+		{
+			cursor: initial;
+		}
+	}
+
+	a,
+	button
+	{
+		cursor: none;
+
+		&:hover
+		{
+			cursor: none;
+
+			@media ${theme.mediaBreakpoints.mobile}
+			{
+				cursor: pointer;
+			}
+		}
+	}
+
 	* {
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;

@@ -1,3 +1,4 @@
+import { useContext } from 'react';
 import styled from 'styled-components';
 import { useInView } from 'react-intersection-observer';
 import FooterMenu from './FooterMenu';
