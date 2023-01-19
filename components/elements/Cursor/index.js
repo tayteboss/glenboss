@@ -24,42 +24,42 @@ const CursorRing = styled(motion.div)`
 	align-content: center;
 	justify-content: center;
 	top: ${(props) =>
-		props.isHoveringLargeLink
+		props.$isHoveringLargeLink
 			? '-40px'
-			: props.isHoveringLink
+			: props.$isHoveringLink
 			? '-15px'
 			: '-5px'};
 	left: ${(props) =>
-		props.isHoveringLargeLink
+		props.$isHoveringLargeLink
 			? '-40px'
-			: props.isHoveringLink
+			: props.$isHoveringLink
 			? '-15px'
 			: '-5px'};
 	height: ${(props) =>
-		props.hideCursor
+		props.$hideCursor
 			? '0'
-			: props.isHoveringLargeLink
+			: props.$isHoveringLargeLink
 			? '80px'
-			: props.isHoveringLink
+			: props.$isHoveringLink
 			? '30px'
 			: '10px'};
 	width: ${(props) =>
-		props.hideCursor
+		props.$hideCursor
 			? '0'
-			: props.isHoveringLargeLink
+			: props.$isHoveringLargeLink
 			? '80px'
-			: props.isHoveringLink
+			: props.$isHoveringLink
 			? '30px'
 			: '10px'};
 	background: ${(props) =>
-		props.isDragging
+		props.$isDragging
 			? props.theme.colours.white
-			: props.hideCursor
+			: props.$hideCursor
 			? 'none'
 			: props.theme.colours.white};
 	border-radius: 50%;
 	border: ${(props) =>
-		props.hideCursor
+		props.$hideCursor
 			? 'none'
 			: `1px solid ${(props) => props.theme.colours.white}`};
 	mix-blend-mode: difference;
@@ -193,6 +193,7 @@ const Cursor = ({ cursorRefresh }) => {
 
 	useEffect(() => {
 		setIsHoveringLink(false);
+		setIsHoveringLargeLink(false);
 		setHideCursor(false);
 		// setIsDragging(false);
 		// setCursorText(false);
@@ -201,10 +202,10 @@ const Cursor = ({ cursorRefresh }) => {
 	return (
 		<CursorWrapper isOnDevice={isOnDevice}>
 			<CursorRing
-				isHoveringLargeLink={isHoveringLargeLink}
-				isHoveringLink={isHoveringLink}
-				// isDragging={isDragging}
-				hideCursor={hideCursor}
+				$isHoveringLargeLink={isHoveringLargeLink}
+				$isHoveringLink={isHoveringLink}
+				// $isDragging={isDragging}
+				$hideCursor={hideCursor}
 				variants={variantsWrapper}
 				animate="visible"
 			>

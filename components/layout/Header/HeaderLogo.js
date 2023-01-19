@@ -16,6 +16,7 @@ const Initial = styled(motion.div)`
 `;
 
 const Full = styled(motion.div)`
+	margin-right: ${(props) => (props.$mr ? props.$mr : 0)};
 	color: var(--colour-white);
 `;
 

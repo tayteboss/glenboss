@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import InnerWrapper from '../../common/InnerWrapper';
 import HeaderLogo from './HeaderLogo';
 import HeaderMenu from './HeaderMenu';
+import useHeaderHeight from '../../../hooks/useHeaderHeight';
 
 const options = require('../../../json/options.json');
 
@@ -23,6 +24,7 @@ const HeaderInner = styled.div`
 
 const Header = ({ setMenuIsOpen, menuIsOpen }) => {
 	const siteData = options?.data?.siteInformation;
+	useHeaderHeight();
 
 	return (
 		<HeaderWrapper className="header">

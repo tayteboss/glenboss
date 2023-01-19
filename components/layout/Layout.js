@@ -6,6 +6,8 @@ import Footer from './Footer';
 import Menu from './Menu';
 import Cursor from '../elements/Cursor';
 import useScrolled from '../../hooks/useScrolled';
+import LandingSequence from '../blocks/LandingSequence';
+import NeutralSequence from '../blocks/NeutralSequence';
 
 export const CursorContext = createContext();
 
@@ -14,7 +16,7 @@ const Main = styled.main`
 	padding-top: var(--header-h);
 `;
 
-const Layout = ({ children }) => {
+const Layout = ({ children, siteReady, hasVisited }) => {
 	const [menuIsOpen, setMenuIsOpen] = useState(false);
 	const [cursorRefresh, setCursorRefresh] = useState(1);
 
@@ -22,7 +24,11 @@ const Layout = ({ children }) => {
 
 	useEffect(() => {
 		setCursorRefresh(cursorRefresh + 1);
-	}, [hasScrolled]);
+
+		setTimeout(() => {
+			setCursorRefresh(cursorRefresh + 1);
+		}, 500);
+	}, [hasScrolled, siteReady, hasVisited]);
 
 	useEffect(() => {
 		const html = document.querySelector('html');
@@ -48,10 +54,18 @@ const Layout = ({ children }) => {
 
 	return (
 		<CursorContext.Provider value={{ cursorRefresh, setCursorRefresh }}>
-			<Header setMenuIsOpen={setMenuIsOpen} menuIsOpen={menuIsOpen} />
-			<Menu isActive={menuIsOpen} />
-			<Main>{children}</Main>
-			<Footer />
+			{!hasVisited && <LandingSequence siteReady={siteReady} />}
+			{siteReady && (
+				<>
+					<Header
+						setMenuIsOpen={setMenuIsOpen}
+						menuIsOpen={menuIsOpen}
+					/>
+					<Menu isActive={menuIsOpen} />
+					<Main>{children}</Main>
+					<Footer />
+				</>
+			)}
 			<Cursor cursorRefresh={cursorRefresh} />
 		</CursorContext.Provider>
 	);
