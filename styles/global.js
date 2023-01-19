@@ -46,6 +46,7 @@ export const GlobalStyles = createGlobalStyle`
 
 	html {
 		scroll-behavior: smooth;
+		background: ${theme.colours.black};
 
 		&.no-scroll {
 			overflow-y: hidden;
@@ -226,6 +227,52 @@ export const GlobalStyles = createGlobalStyle`
 		}
 	}
 
+	.tab-radius {
+		border-top-left-radius: 16px;
+		border-top-right-radius: 16px;
+		box-shadow: 0px -10px 20px rgba(0, 0, 0, 0.1);
+	}
+
+	.view-element-fade-in
+	{
+		opacity: 0;
+
+		transition: opacity 300ms ease;
+
+		&--in-view
+		{
+			opacity: 1;
+		}
+	}
+
+	.view-element-bottom-top
+	{
+		opacity: 0;
+		transform: translateY(50px);
+
+		transition: opacity 300ms ease, transform 300ms ease;
+
+		&--in-view
+		{
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	.view-element-scale-up
+	{
+		transform: scale(0.95);
+		opacity: 0;
+
+		transition: opacity 300ms ease, transform 300ms ease;
+
+		&--in-view
+		{
+			opacity: 1;
+			transform: scale(1);
+		}
+	}
+
 	::placeholder {
 		color: currentcolor;
 		opacity: 1;
@@ -330,46 +377,6 @@ export const GlobalStyles = createGlobalStyle`
 				list-style: decimal;
 			}
 		}
-
-	.view-element-fade-in
-	{
-		opacity: 0;
-
-		transition: opacity 300ms ease;
-
-		&--in-view
-		{
-			opacity: 1;
-		}
-	}
-
-	.view-element-bottom-top
-	{
-		opacity: 0;
-		transform: translateY(50px);
-
-		transition: opacity 300ms ease, transform 300ms ease;
-
-		&--in-view
-		{
-			opacity: 1;
-			transform: translateY(0);
-		}
-	}
-
-	.view-element-scale-up
-	{
-		transform: scale(0.95);
-		opacity: 0;
-
-		transition: opacity 300ms ease, transform 300ms ease;
-
-		&--in-view
-		{
-			opacity: 1;
-			transform: scale(1);
-		}
-	}
 
 	input:-webkit-autofill,
 	input:-webkit-autofill:hover, 
