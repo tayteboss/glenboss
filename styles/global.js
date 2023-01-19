@@ -66,6 +66,7 @@ export const GlobalStyles = createGlobalStyle`
 		outline: none;
 		border-radius: 0;
 		box-shadow: none;
+		font-weight: 100;
 	}
 
 	::selection {
@@ -84,7 +85,7 @@ export const GlobalStyles = createGlobalStyle`
 
 	body {
 		position: relative;
-		background-color: var(--colour-white);
+		background-color: var(--colour-system-white-grey-50);
 	}
 
 	input,

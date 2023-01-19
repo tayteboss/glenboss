@@ -7,7 +7,6 @@ import Menu from './Menu';
 import Cursor from '../elements/Cursor';
 import useScrolled from '../../hooks/useScrolled';
 import LandingSequence from '../blocks/LandingSequence';
-import NeutralSequence from '../blocks/NeutralSequence';
 
 export const CursorContext = createContext();
 
