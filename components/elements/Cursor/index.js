@@ -26,18 +26,30 @@ const CursorRing = styled(motion.div)`
 	top: ${(props) =>
 		props.$isHoveringLargeLink
 			? '-40px'
+			: props.$isDragging
+			? '0'
+			: props.$isHoveringDrag
+			? '-25px'
 			: props.$isHoveringLink
 			? '-15px'
 			: '-5px'};
 	left: ${(props) =>
 		props.$isHoveringLargeLink
 			? '-40px'
+			: props.$isDragging
+			? '-40px'
+			: props.$isHoveringDrag
+			? '-25px'
 			: props.$isHoveringLink
 			? '-15px'
 			: '-5px'};
 	height: ${(props) =>
 		props.$hideCursor
 			? '0'
+			: props.$isDragging
+			? '10px'
+			: props.$isHoveringDrag
+			? '50px'
 			: props.$isHoveringLargeLink
 			? '80px'
 			: props.$isHoveringLink
@@ -46,6 +58,10 @@ const CursorRing = styled(motion.div)`
 	width: ${(props) =>
 		props.$hideCursor
 			? '0'
+			: props.$isDragging
+			? '80px'
+			: props.$isHoveringDrag
+			? '50px'
 			: props.$isHoveringLargeLink
 			? '80px'
 			: props.$isHoveringLink
@@ -53,15 +69,12 @@ const CursorRing = styled(motion.div)`
 			: '10px'};
 	background: ${(props) =>
 		props.$isDragging
-			? props.theme.colours.white
-			: props.$hideCursor
+			? 'var(--colour-white)'
+			: props.$isHoveringDrag
 			? 'none'
-			: props.theme.colours.white};
-	border-radius: 50%;
-	border: ${(props) =>
-		props.$hideCursor
-			? 'none'
-			: `1px solid ${(props) => props.theme.colours.white}`};
+			: 'var(--colour-white)'};
+	border-radius: 100px;
+	border: 1px solid var(--colour-white);
 	mix-blend-mode: difference;
 	pointer-events: none;
 	text-align: center;
@@ -76,9 +89,10 @@ const CursorText = styled.span`
 	margin-top: -5px;
 	text-transform: uppercase;
 	letter-spacing: 0.036rem;
-	font-size: 0.667rem;
+	font-size: 0.75rem;
 	color: ${(props) => props.theme.colours.white};
 	white-space: nowrap;
+	padding-top: 14px;
 
 	transition: opacity 300ms ease 300ms, padding-top 300ms ease;
 `;
@@ -87,8 +101,9 @@ const Cursor = ({ cursorRefresh }) => {
 	const [isHoveringLink, setIsHoveringLink] = useState(false);
 	const [isHoveringLargeLink, setIsHoveringLargeLink] = useState(false);
 	const [hideCursor, setHideCursor] = useState(false);
-	// const [isDragging, setIsDragging] = useState(false);
-	// const [cursorText, setCursorText] = useState('');
+	const [isDragging, setIsDragging] = useState(false);
+	const [isHoveringDrag, setIsHoveringDrag] = useState(false);
+	const [cursorText, setCursorText] = useState('');
 	const [isOnDevice, setIsOnDevice] = useState(false);
 	const position = useMousePosition();
 	const router = useRouter();
@@ -114,6 +129,7 @@ const Cursor = ({ cursorRefresh }) => {
 		const aTags = document.querySelectorAll('a');
 		const altLinks = document.querySelectorAll('.cursor-link');
 		const hideLinks = document.querySelectorAll('.cursor-hide');
+		const dragLinks = document.querySelectorAll('.cursor-drag');
 		const largeLinks = document.querySelectorAll('.cursor-large-link');
 
 		aTags.forEach((link) => {
@@ -152,31 +168,28 @@ const Cursor = ({ cursorRefresh }) => {
 			});
 		});
 
-		// dragLinks.forEach((link) => {
-		// 	link.addEventListener('mouseenter', () => {
-		// 		setHideCursor(true);
-		// 		setCursorText('drag');
-		// 	});
-		// 	link.addEventListener('mouseleave', () => {
-		// 		setHideCursor(false);
-		// 		setCursorText('');
-		// 		setIsDragging(false);
-		// 	});
-		// 	link.addEventListener('mousedown', () => {
-		// 		setCursorText('');
-		// 		setIsDragging(true);
-		// 	});
-		// 	link.addEventListener('mouseup', () => {
-		// 		setHideCursor(true);
-		// 		setCursorText('drag');
-		// 		setIsDragging(false);
-		// 	});
-		// 	link.addEventListener('click', () => {
-		// 		setHideCursor(false);
-		// 		setCursorText('');
-		// 		setIsDragging(false);
-		// 	});
-		// });
+		dragLinks.forEach((link) => {
+			link.addEventListener('mouseenter', () => {
+				setCursorText('drag');
+				setIsHoveringDrag(true);
+			});
+			link.addEventListener('mouseleave', () => {
+				setCursorText('');
+				setIsDragging(false);
+				setIsHoveringDrag(false);
+			});
+			link.addEventListener('mousedown', () => {
+				setIsDragging(true);
+				setCursorText('');
+			});
+			link.addEventListener('mouseup', () => {
+				setCursorText('drag');
+				setIsDragging(false);
+			});
+			link.addEventListener('click', () => {
+				setIsDragging(false);
+			});
+		});
 
 		// checking if on a device
 		const ua = navigator.userAgent;
@@ -195,8 +208,8 @@ const Cursor = ({ cursorRefresh }) => {
 		setIsHoveringLink(false);
 		setIsHoveringLargeLink(false);
 		setHideCursor(false);
-		// setIsDragging(false);
-		// setCursorText(false);
+		setIsDragging(false);
+		setCursorText(false);
 	}, [router.asPath, cursorRefresh]);
 
 	return (
@@ -204,14 +217,13 @@ const Cursor = ({ cursorRefresh }) => {
 			<CursorRing
 				$isHoveringLargeLink={isHoveringLargeLink}
 				$isHoveringLink={isHoveringLink}
-				// $isDragging={isDragging}
+				$isDragging={isDragging}
+				$isHoveringDrag={isHoveringDrag}
 				$hideCursor={hideCursor}
 				variants={variantsWrapper}
 				animate="visible"
 			>
-				{/* <CursorText>
-					{cursorText}
-				</CursorText> */}
+				<CursorText>{cursorText}</CursorText>
 			</CursorRing>
 		</CursorWrapper>
 	);

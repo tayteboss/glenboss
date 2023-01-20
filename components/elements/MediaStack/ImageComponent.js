@@ -8,7 +8,7 @@ const ImageComponentWrapper = styled.div`
 
 const ImageComponent = ({ data }) => {
 	return (
-		<ImageComponentWrapper>
+		<ImageComponentWrapper className="image-component-wrapper">
 			<Image src={data.url} layout="fill" />
 		</ImageComponentWrapper>
 	);

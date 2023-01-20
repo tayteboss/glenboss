@@ -25,10 +25,17 @@ const LandingSequenceWrapper = styled(motion.div)`
 
 		transition: all 750ms var(--transition-ease);
 	}
+
+	.inner-wrapper {
+		height: 100%;
+		overflow: hidden;
+	}
 `;
 
 const LandingSequenceInner = styled.div`
 	display: flex;
+	bottom: 0;
+	left: 0;
 	align-items: flex-end;
 	height: 100vh;
 	position: relative;

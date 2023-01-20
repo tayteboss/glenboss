@@ -261,6 +261,12 @@ export const GlobalStyles = createGlobalStyle`
 		border-top-left-radius: 16px;
 		border-top-right-radius: 16px;
 		box-shadow: 0px -10px 20px rgba(0, 0, 0, 0.1);
+		overflow: hidden;
+	}
+
+	.image-radius {
+		border-radius: 16px;
+		overflow: hidden;
 	}
 
 	.tab-wrapper {
