@@ -263,6 +263,11 @@ export const GlobalStyles = createGlobalStyle`
 		box-shadow: 0px -10px 20px rgba(0, 0, 0, 0.1);
 	}
 
+	.tab-wrapper {
+		margin-top: -30px;
+		position: relative;
+	}
+
 	.view-element-fade-in
 	{
 		opacity: 0;
@@ -278,9 +283,9 @@ export const GlobalStyles = createGlobalStyle`
 	.view-element-bottom-top
 	{
 		opacity: 0;
-		transform: translateY(50px);
+		transform: translateY(15px);
 
-		transition: opacity 300ms ease, transform 300ms ease;
+		transition: opacity 300ms cubic-bezier(0.65, 0, 0.35, 1), transform 300ms cubic-bezier(0.65, 0, 0.35, 1);
 
 		&--in-view
 		{

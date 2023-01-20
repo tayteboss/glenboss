@@ -3,11 +3,13 @@ import { useInView } from 'react-intersection-observer';
 import ContentSection from './ContentSection';
 import MediaSection from './MediaSection';
 
-const PageHeaderWrapper = styled.div`
+const PageHeaderWrapper = styled.section`
 	background: var(--colour-system-white-grey-50);
+	position: relative;
+	z-index: ${(props) => props.$zIndex};
 `;
 
-const PageHeader = ({ data }) => {
+const PageHeader = ({ data, zIndex }) => {
 	const { ref, inView } = useInView({
 		triggerOnce: true,
 		threshold: 0.2,
@@ -20,6 +22,7 @@ const PageHeader = ({ data }) => {
 			className={`view-element-fade-in ${
 				inView ? 'view-element-fade-in--in-view' : ''
 			}`}
+			$zIndex={zIndex}
 		>
 			<ContentSection data={data} />
 			<MediaSection data={data} />
