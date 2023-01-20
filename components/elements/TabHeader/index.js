@@ -1,11 +1,13 @@
 import styled from 'styled-components';
+import { useInView } from 'react-intersection-observer';
 import InnerWrapper from '../../common/InnerWrapper';
 import PrimaryLink from '../PrimaryLink';
 import TabHeaderTitle from './TabHeaderTitle';
-import { useInView } from 'react-intersection-observer';
 
 const TabHeaderWrapper = styled.div`
 	padding-top: 80px;
+	position: relative;
+	z-index: 2;
 
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 		padding-top: 64px;
@@ -27,17 +29,13 @@ const PrimaryLinkWrapper = styled.div`
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 		margin-top: 32px;
 	}
-
-	&.view-element-fade-in {
-		transition-delay: 300ms;
-	}
 `;
 
-const TabHeader = ({ data }) => {
+const TabHeader = ({ data, useDarkTheme }) => {
 	const { ref, inView } = useInView({
 		triggerOnce: true,
 		threshold: 0.2,
-		rootMargin: '-20px',
+		rootMargin: '-10%',
 	});
 
 	return (
@@ -55,7 +53,10 @@ const TabHeader = ({ data }) => {
 								inView ? 'view-element-fade-in--in-view' : ''
 							}`}
 						>
-							<PrimaryLink data={data.link[0]} />
+							<PrimaryLink
+								data={data.link[0]}
+								useDarkTheme={useDarkTheme}
+							/>
 						</PrimaryLinkWrapper>
 					)}
 				</TabHeaderInner>

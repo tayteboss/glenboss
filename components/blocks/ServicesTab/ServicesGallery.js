@@ -115,7 +115,6 @@ const ServicesGallery = ({ data }) => {
 
 	const handleNextSlide = () => {
 		if (!emblaApi) return;
-		console.log('next');
 		emblaApi.scrollNext();
 	};
 

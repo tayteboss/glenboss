@@ -11,10 +11,6 @@ const SecondaryTitle = styled.p`
 
 const PrimaryTitle = styled.h1`
 	color: var(--colour-black);
-
-	&.view-element-bottom-top {
-		transition-delay: 300ms;
-	}
 `;
 
 const TabHeaderTitle = ({ primaryTitle, secondaryTitle, inView }) => {
