@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { useInView } from 'react-intersection-observer';
 import ContentSection from './ContentSection';
 import MediaSection from './MediaSection';
 
@@ -7,8 +8,19 @@ const PageHeaderWrapper = styled.div`
 `;
 
 const PageHeader = ({ data }) => {
+	const { ref, inView } = useInView({
+		triggerOnce: true,
+		threshold: 0.2,
+		rootMargin: '-5%',
+	});
+
 	return (
-		<PageHeaderWrapper>
+		<PageHeaderWrapper
+			ref={ref}
+			className={`view-element-fade-in ${
+				inView ? 'view-element-fade-in--in-view' : ''
+			}`}
+		>
 			<ContentSection data={data} />
 			<MediaSection data={data} />
 		</PageHeaderWrapper>

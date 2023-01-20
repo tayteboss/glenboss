@@ -8,6 +8,9 @@ const nextConfig = {
 	env: {
 		SITE_URL: process.env.SITE_URL,
 	},
+	images: {
+		domains: ['www.datocms-assets.com'],
+	},
 };
 
 module.exports = nextConfig;

@@ -44,6 +44,7 @@ const Dot = styled.div`
 
 const PrimaryLinkWidthHolder = styled.div`
 	opacity: 0;
+	white-space: nowrap;
 `;
 
 const PrimaryLinkCSS = css`
