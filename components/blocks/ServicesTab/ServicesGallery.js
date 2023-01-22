@@ -105,7 +105,7 @@ const ServicesGallery = ({ data }) => {
 	const [emblaRef, emblaApi] = useEmblaCarousel({
 		loop: true,
 		align: 'start',
-		speed: 3,
+		speed: 7,
 	});
 
 	const handlePreviousSlide = () => {

@@ -8,6 +8,7 @@ import { CursorContext } from '../../layout/Layout';
 const PartnersGalleryWrapper = styled.div`
 	position: relative;
 	z-index: 2;
+	padding-bottom: 50px;
 `;
 
 const Title = styled.h1`
@@ -32,8 +33,6 @@ const PartnersGallery = ({ data, isHoveredIndex, setIsHoveredIndex }) => {
 		threshold: 0.2,
 		rootMargin: '-20px',
 	});
-
-	console.log('index', isHoveredIndex);
 
 	return (
 		<PartnersGalleryWrapper
