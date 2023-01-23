@@ -13,11 +13,9 @@ const ContactTabWrapper = styled.section`
 const ContactTab = ({ data, zIndex }) => {
 	const siteData = options?.data?.siteInformation;
 
-	console.log('siteData', siteData);
-
 	return (
 		<ContactTabWrapper className="tab-radius tab-wrapper" $zIndex={zIndex}>
-			<TabHeader data={data?.headingInformation[0]} useDarkTheme />
+			<TabHeader data={data?.headingInformation[0]} />
 			<ContactGallery data={data?.socialImages} />
 			<ContactSocialLink
 				igLink={siteData?.instagramLink}

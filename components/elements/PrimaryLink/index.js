@@ -4,7 +4,10 @@ import cleanUrl from '../../../utils/cleanUrl';
 
 const PrimaryLinkWrapper = styled.a`
 	text-decoration: none;
-	background: ${(props) => props.$isDark ? 'var(--colour-white)' : 'var(--colour-system-white-grey-50)'};
+	background: ${(props) =>
+		props.$isDark
+			? 'var(--colour-white)'
+			: 'var(--colour-system-white-grey-50)'};
 	padding: 8px 16px;
 	display: flex;
 	align-items: center;
@@ -69,19 +72,34 @@ const HoverPrimaryLinkTitle = styled.div`
 	transition: all var(--transition-speed-default) var(--transition-ease);
 `;
 
-const PrimaryLink = ({ data, useDarkTheme = false }) => {
+const PrimaryLink = ({
+	data,
+	useDarkTheme = false,
+	dataOverride = false,
+	target = '_self',
+}) => {
 	return (
-		<Link href={cleanUrl(data)} passHref>
-			<PrimaryLinkWrapper $isDark={useDarkTheme} className="primary-link">
+		<Link href={dataOverride ? dataOverride.link : cleanUrl(data)} passHref>
+			<PrimaryLinkWrapper
+				$isDark={useDarkTheme}
+				className="primary-link"
+				target={target}
+			>
 				<Dot className="primary-link__dot" />
 				<PrimaryLinkWidthHolder className="type-sm">
-					{data.linkTitle && data.linkTitle}
+					{dataOverride
+						? dataOverride.title
+						: data.linkTitle && data.linkTitle}
 				</PrimaryLinkWidthHolder>
 				<PrimaryLinkTitle className="type-sm primary-link__title">
-					{data.linkTitle && data.linkTitle}
+					{dataOverride
+						? dataOverride.title
+						: data.linkTitle && data.linkTitle}
 				</PrimaryLinkTitle>
 				<HoverPrimaryLinkTitle className="type-sm primary-link__hover-title">
-					{data.linkTitle && data.linkTitle}
+					{dataOverride
+						? dataOverride.title
+						: data.linkTitle && data.linkTitle}
 				</HoverPrimaryLinkTitle>
 			</PrimaryLinkWrapper>
 		</Link>

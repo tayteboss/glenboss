@@ -9,7 +9,7 @@ const ImageComponentWrapper = styled.div`
 const ImageComponent = ({ data }) => {
 	return (
 		<ImageComponentWrapper className="image-component-wrapper">
-			<Image src={data.url} layout="fill" />
+			<Image src={data.url} layout="fill" objectFit="cover" />
 		</ImageComponentWrapper>
 	);
 };

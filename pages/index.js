@@ -8,11 +8,9 @@ import ContactTab from '../components/blocks/ContactTab';
 
 const PageWrapper = styled.div``;
 
-const Page = ({ data, siteData }) => {
+const Page = ({ data }) => {
 	const seoTitle = data?.pageSeo[0]?.title;
 	const seoDescription = data?.pageSeo[0]?.description;
-
-	console.log('data', data);
 
 	return (
 		<PageWrapper>

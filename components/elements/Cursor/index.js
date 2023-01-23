@@ -130,6 +130,7 @@ const Cursor = ({ cursorRefresh }) => {
 		const altLinks = document.querySelectorAll('.cursor-link');
 		const hideLinks = document.querySelectorAll('.cursor-hide');
 		const dragLinks = document.querySelectorAll('.cursor-drag');
+		const closeLinks = document.querySelectorAll('.cursor-close');
 		const largeLinks = document.querySelectorAll('.cursor-large-link');
 
 		aTags.forEach((link) => {
@@ -188,6 +189,33 @@ const Cursor = ({ cursorRefresh }) => {
 			});
 			link.addEventListener('click', () => {
 				setIsDragging(false);
+			});
+		});
+
+		closeLinks.forEach((link) => {
+			link.addEventListener('mouseenter', () => {
+				setCursorText('close');
+				setIsHoveringDrag(true);
+			});
+			link.addEventListener('mouseleave', () => {
+				setCursorText('');
+				setIsDragging(false);
+				setIsHoveringDrag(false);
+			});
+			link.addEventListener('mousedown', () => {
+				setCursorText('');
+				setIsDragging(false);
+				setIsHoveringDrag(false);
+			});
+			link.addEventListener('mouseup', () => {
+				setCursorText('');
+				setIsDragging(false);
+				setIsHoveringDrag(false);
+			});
+			link.addEventListener('click', () => {
+				setCursorText('');
+				setIsDragging(false);
+				setIsHoveringDrag(false);
 			});
 		});
 

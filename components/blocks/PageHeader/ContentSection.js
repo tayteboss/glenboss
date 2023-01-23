@@ -1,14 +1,16 @@
 import { useTransform, useScroll, motion } from 'framer-motion';
 import styled from 'styled-components';
 import InnerWrapper from '../../common/InnerWrapper';
+import PrimaryButton from '../../elements/PrimaryButton';
 import PrimaryLink from '../../elements/PrimaryLink';
 
 const ContentSectionWrapper = styled(motion.div)``;
 
 const ContentSectionInner = styled.div`
 	display: flex;
-	justify-content: space-between;
-	align-items: flex-end;
+	flex-direction: ${(props) => props.$hasButtons ? 'column' : 'row'};
+	justify-content: ${(props) => props.$hasButtons ? 'flex-start' : 'space-between'};
+	align-items: ${(props) => props.$hasButtons ? 'flex-start' : 'flex-end'};
 	padding: 180px 0 32px;
 
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
@@ -29,20 +31,35 @@ const Title = styled.h1`
 			: 'var(--colour-black)'};
 `;
 
-const PrimaryButtonWrapper = styled.div`
+const ContentSectionButtonWrapper = styled.div`
+	display: flex;
+	flex-wrap: wrap;
+	row-gap: 16px;
+	margin-top: 32px;
+`;
+
+const PrimaryLinkWrapper = styled.div`
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 		margin-top: 32px;
 	}
 `;
 
-const ContentSection = ({ data }) => {
+const PrimaryButtonWrapper = styled.div`
+	&:not(:last-child) {
+		margin-right: 8px;
+	}
+`;
+
+const ContentSection = ({ data, handleClick }) => {
 	const { scrollY } = useScroll();
 	const y1 = useTransform(scrollY, [0, 400], [0, 150]);
+	const hasLinks = data?.link.length > 0;
+	const hasButtons = data?.buttons.length > 0;
 
 	return (
 		<ContentSectionWrapper style={{ y: y1 }}>
 			<InnerWrapper>
-				<ContentSectionInner>
+				<ContentSectionInner $hasButtons={hasButtons}>
 					<TitleWrapper>
 						{data?.primaryHeading && (
 							<Title>{data?.primaryHeading}</Title>
@@ -51,9 +68,25 @@ const ContentSection = ({ data }) => {
 							<Title $isSecondary>{data?.secondaryHeading}</Title>
 						)}
 					</TitleWrapper>
-					<PrimaryButtonWrapper>
-						<PrimaryLink data={data?.link[0]} useDarkTheme />
-					</PrimaryButtonWrapper>
+					{hasLinks && (
+						<PrimaryLinkWrapper>
+							<PrimaryLink data={data?.link[0]} useDarkTheme />
+						</PrimaryLinkWrapper>
+					)}
+					{hasButtons && (
+						<ContentSectionButtonWrapper>
+							{data.buttons.map((item, index) => (
+								<PrimaryButtonWrapper key={index}>
+									<PrimaryButton
+										data={item}
+										isActive={index === 0}
+										handleClick={handleClick}
+										useDarkTheme
+									/>
+								</PrimaryButtonWrapper>
+							))}
+						</ContentSectionButtonWrapper>
+					)}
 				</ContentSectionInner>
 			</InnerWrapper>
 		</ContentSectionWrapper>
