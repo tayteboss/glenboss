@@ -3,6 +3,8 @@ import { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import ContentModal from '../../components/blocks/ContentModal';
 import PageHeader from '../../components/blocks/PageHeader';
+import PageHeaderStickyButtons from '../../components/blocks/PageHeader/PageHeaderStickyButtons';
+import StoryBuilder from '../../components/blocks/StoryBuilder';
 import { CursorContext } from '../../components/layout/Layout';
 import useNoScroll from '../../hooks/useNoScroll';
 import { getProfilePage } from '../../lib/datocms';
@@ -16,6 +18,7 @@ const Page = ({ data }) => {
 
 	const seoTitle = data?.pageSeo[0]?.title;
 	const seoDescription = data?.pageSeo[0]?.description;
+	const hasButtons = data?.pageHeader[0].buttons.length > 0;
 
 	const handleOpenModal = (triggerTitle) => {
 		if (triggerTitle === 'Charity work')
@@ -24,8 +27,8 @@ const Page = ({ data }) => {
 			setModalData(data?.profileInformation[0]);
 		if (triggerTitle === 'History & Achievements') {
 			setModalData(false);
-			// SCROLL TO ACHIEVEMENTS SECTION
-		};
+			document.getElementById('history-achievements').scrollIntoView();
+		}
 	};
 
 	useEffect(() => {
@@ -38,8 +41,6 @@ const Page = ({ data }) => {
 		setCursorRefresh(cursorRefresh + 1);
 	}, [modalData]);
 
-	console.log('modalData', modalData);
-
 	return (
 		<PageWrapper>
 			<NextSeo
@@ -51,10 +52,17 @@ const Page = ({ data }) => {
 				zIndex="1"
 				handleClick={(e) => handleOpenModal(e)}
 			/>
+			<StoryBuilder data={data?.historyAchievements[0]} zIndex="2" />
 			<ContentModal
 				data={modalData}
 				handleCloseModal={() => setModalData(false)}
 			/>
+			{hasButtons && (
+				<PageHeaderStickyButtons
+					data={data?.pageHeader[0].buttons}
+					handleClick={(e) => handleOpenModal(e)}
+				/>
+			)}
 		</PageWrapper>
 	);
 };

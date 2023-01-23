@@ -19,7 +19,7 @@ const Footer = () => {
 	});
 
 	return (
-		<FooterWrapper className="tab-radius" ref={ref}>
+		<FooterWrapper className="tab-radius tab-wrapper" ref={ref}>
 			<FooterMenu data={siteData?.menu[0]?.links} inView={inView} />
 			<FooterSecondary
 				secondaryLinks={siteData?.footerSecondaryLinks}

@@ -12,6 +12,11 @@ const PageHeaderStickyButtonsWrapper = styled(motion.div)`
 	display: flex;
 	box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
 	border-radius: 100px;
+	z-index: 50;
+
+	@media ${(props) => props.theme.mediaBreakpoints.mobile} {
+		display: none;
+	}
 `;
 
 const SecondaryButtonWrapper = styled(motion.div)`
