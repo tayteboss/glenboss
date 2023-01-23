@@ -10,8 +10,6 @@ const Page = ({ data }) => {
 	const seoTitle = data?.pageSeo[0]?.title;
 	const seoDescription = data?.pageSeo[0]?.description;
 
-	console.log('data', data);
-
 	return (
 		<PageWrapper>
 			<NextSeo
@@ -21,7 +19,8 @@ const Page = ({ data }) => {
 			<PageHeader data={data?.pageHeader[0]} zIndex="1" />
 			<ServicesList data={data?.servicesList[0]} zIndex="2" />
 		</PageWrapper>
-)};
+	);
+};
 
 export async function getStaticProps({ params }) {
 	const data = await getServicesPage();

@@ -43,6 +43,10 @@ const ImageWrapper = styled.div`
 	height: 560px;
 	width: 100%;
 	overflow: hidden;
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		height: 200px;
+	}
 `;
 
 const Img = styled.img`
@@ -179,7 +183,7 @@ const ContentModal = ({ data, handleCloseModal }) => {
 						onClick={() => handleCloseModal()}
 					/>
 					<CloseTriggerIcon
-						classNam="cursor-link"
+						className="cursor-link"
 						key={3}
 						variants={triggerIconVariants}
 						initial="hidden"

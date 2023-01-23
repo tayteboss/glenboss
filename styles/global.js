@@ -431,4 +431,4 @@ export const GlobalStyles = createGlobalStyle`
 	{
 		-webkit-text-fill-color: white;
 	}
-`;
+}`;
