@@ -65,8 +65,6 @@ const YearBlock = ({ data }) => {
 		rootMargin: viewportWidth === 'mobile' ? '-100px' : viewportWidth === 'tabletPortrait' ? '-200px' : '-300px',
 	});
 
-	console.log('inView', inView);
-
 	return (
 		<YearBlockWrapper ref={ref}>
 			<AnimatePresence mode="wait">
