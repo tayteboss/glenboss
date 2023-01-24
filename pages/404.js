@@ -11,7 +11,8 @@ const PageWrapper = styled.div`
 const Page = () => {
 	return (
 		<PageWrapper>
-			<NextSeo title="Glen Boss - 404 Page" />
+			404
+			{/* <NextSeo title="Glen Boss - 404 Page" />
 			<InnerWrapper>
 				<Grid>
 					<ContactCard
@@ -19,7 +20,7 @@ const Page = () => {
 						links={[{ title: 'Return home', link: '/' }]}
 					/>
 				</Grid>
-			</InnerWrapper>
+			</InnerWrapper> */}
 		</PageWrapper>
 	);
 };

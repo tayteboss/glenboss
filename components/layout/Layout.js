@@ -56,7 +56,7 @@ const Layout = ({ children, siteReady, hasVisited, appCursorRefresh }) => {
 
 	return (
 		<CursorContext.Provider value={{ cursorRefresh, setCursorRefresh }}>
-			{/* {!hasVisited && <LandingSequence siteReady={siteReady} />} */}
+			{!hasVisited && <LandingSequence siteReady={siteReady} />}
 			{siteReady && (
 				<>
 					<Header
