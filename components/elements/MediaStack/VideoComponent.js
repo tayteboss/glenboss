@@ -80,11 +80,6 @@ const VideoComponent = ({ data, inView }) => {
 
 	const videoRef = useRef();
 
-	useEffect(() => {
-		if (!videoRef?.current) return;
-		videoRef.current.play();
-	}, [videoRef]);
-
 	return (
 		<VideoComponentWrapper className="video-component-wrapper">
 			<AnimatePresence>

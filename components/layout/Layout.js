@@ -11,15 +11,18 @@ import LandingSequence from '../blocks/LandingSequence';
 export const CursorContext = createContext();
 
 const Main = styled.main`
-	min-height: 150vh;
 	padding-top: var(--header-h);
 `;
 
-const Layout = ({ children, siteReady, hasVisited }) => {
+const Layout = ({ children, siteReady, hasVisited, appCursorRefresh }) => {
 	const [menuIsOpen, setMenuIsOpen] = useState(false);
 	const [cursorRefresh, setCursorRefresh] = useState(1);
 
 	const hasScrolled = useScrolled(100);
+
+	useEffect(() => {
+		setCursorRefresh(cursorRefresh + 1);
+	}, [appCursorRefresh]);
 
 	useEffect(() => {
 		setCursorRefresh(cursorRefresh + 1);
@@ -53,7 +56,7 @@ const Layout = ({ children, siteReady, hasVisited }) => {
 
 	return (
 		<CursorContext.Provider value={{ cursorRefresh, setCursorRefresh }}>
-			{!hasVisited && <LandingSequence siteReady={siteReady} />}
+			{/* {!hasVisited && <LandingSequence siteReady={siteReady} />} */}
 			{siteReady && (
 				<>
 					<Header

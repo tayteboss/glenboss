@@ -1,9 +1,6 @@
-import { useContext } from 'react';
 import styled from 'styled-components';
 import Marquee from 'react-fast-marquee';
 import { useInView } from 'react-intersection-observer';
-
-import { CursorContext } from '../../layout/Layout';
 
 const PartnersGalleryWrapper = styled.div`
 	position: relative;
@@ -19,13 +16,16 @@ const Title = styled.h1`
 	transition: all var(--transition-speed-slow) var(--transition-ease);
 `;
 
-const PartnersGallery = ({ data, isHoveredIndex, setIsHoveredIndex }) => {
+const PartnersGallery = ({
+	data,
+	isHoveredIndex,
+	setIsHoveredIndex,
+	handleCursorRefresh,
+}) => {
 	const hasData = data.length > 0;
 
-	const { cursorRefresh, setCursorRefresh } = useContext(CursorContext);
-
 	const handleCycleComplete = () => {
-		setCursorRefresh(cursorRefresh + 1);
+		handleCursorRefresh();
 	};
 
 	const { ref, inView } = useInView({

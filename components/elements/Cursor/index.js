@@ -238,6 +238,7 @@ const Cursor = ({ cursorRefresh }) => {
 		setHideCursor(false);
 		setIsDragging(false);
 		setCursorText(false);
+		setIsHoveringDrag(false);
 	}, [router.asPath, cursorRefresh]);
 
 	return (

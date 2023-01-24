@@ -113,8 +113,8 @@ const ContactGallery = ({ data }) => {
 				<SliderWrapper ref={sliderRef}>
 					<Slider style={{ x }}>
 						{sliderOne.map((item, index) => (
-							<MediaWrapper>
-								<MediaStack data={item} key={index} />
+							<MediaWrapper key={index}>
+								<MediaStack data={item} />
 							</MediaWrapper>
 						))}
 					</Slider>
@@ -124,8 +124,8 @@ const ContactGallery = ({ data }) => {
 				<SliderWrapper ref={sliderRef}>
 					<Slider style={{ x: xTwo }}>
 						{sliderTwo.map((item, index) => (
-							<MediaWrapper>
-								<MediaStack data={item} key={index} />
+							<MediaWrapper key={index}>
+								<MediaStack data={item} />
 							</MediaWrapper>
 						))}
 					</Slider>

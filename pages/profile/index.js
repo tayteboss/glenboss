@@ -1,20 +1,17 @@
 import { NextSeo } from 'next-seo';
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import ContentModal from '../../components/blocks/ContentModal';
 import PageHeader from '../../components/blocks/PageHeader';
 import PageHeaderStickyButtons from '../../components/blocks/PageHeader/PageHeaderStickyButtons';
 import StoryBuilder from '../../components/blocks/StoryBuilder';
-import { CursorContext } from '../../components/layout/Layout';
 import useNoScroll from '../../hooks/useNoScroll';
 import { getProfilePage } from '../../lib/datocms';
 
 const PageWrapper = styled.div``;
 
-const Page = ({ data }) => {
+const Page = ({ data, handleCursorRefresh }) => {
 	const [modalData, setModalData] = useState(false);
-
-	const { cursorRefresh, setCursorRefresh } = useContext(CursorContext);
 
 	const seoTitle = data?.pageSeo[0]?.title;
 	const seoDescription = data?.pageSeo[0]?.description;
@@ -38,7 +35,7 @@ const Page = ({ data }) => {
 			useNoScroll(false);
 		}
 
-		setCursorRefresh(cursorRefresh + 1);
+		handleCursorRefresh();
 	}, [modalData]);
 
 	return (
@@ -56,6 +53,7 @@ const Page = ({ data }) => {
 			<ContentModal
 				data={modalData}
 				handleCloseModal={() => setModalData(false)}
+				handleCursorRefresh={handleCursorRefresh}
 			/>
 			{hasButtons && (
 				<PageHeaderStickyButtons

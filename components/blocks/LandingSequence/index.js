@@ -72,7 +72,7 @@ const LoadingText = styled.p`
 	top: 16px;
 	right: 0;
 	color: var(--colour-system-white-grey-700);
-	opacity: ${(props) => props.$isActive ? 1 : 0};
+	opacity: ${(props) => (props.$isActive ? 1 : 0)};
 
 	transition: all var(--transition-speed-default) var(--transition-ease);
 `;
@@ -137,89 +137,87 @@ const LandingSequence = ({ siteReady }) => {
 					<AnimatePresence>
 						{!siteReady && <Loading />}
 					</AnimatePresence>
-					<AnimateSharedLayout>
-						<AnimatePresence>
-							<Initial layout key={1}>
-								G
-							</Initial>
-							{!siteReady && (
-								<Full
-									layout
-									key={2}
-									variants={fullVariants}
-									initial="hidden"
-									animate="visible"
-									exit="hidden"
-								>
-									l
-								</Full>
-							)}
-							{!siteReady && (
-								<Full
-									layout
-									key={3}
-									variants={fullVariants}
-									initial="hidden"
-									animate="visible"
-									exit="hidden"
-								>
-									e
-								</Full>
-							)}
-							{!siteReady && (
-								<Full
-									layout
-									$mr="30px"
-									key={4}
-									variants={fullVariants}
-									initial="hidden"
-									animate="visible"
-									exit="hidden"
-								>
-									n
-								</Full>
-							)}
-							<Initial layout key={5}>
-								B
-							</Initial>
-							{!siteReady && (
-								<Full
-									layout
-									key={6}
-									variants={fullVariants}
-									initial="hidden"
-									animate="visible"
-									exit="hidden"
-								>
-									o
-								</Full>
-							)}
-							{!siteReady && (
-								<Full
-									layout
-									key={7}
-									variants={fullVariants}
-									initial="hidden"
-									animate="visible"
-									exit="hidden"
-								>
-									s
-								</Full>
-							)}
-							{!siteReady && (
-								<Full
-									layout
-									key={8}
-									variants={fullVariants}
-									initial="hidden"
-									animate="visible"
-									exit="hidden"
-								>
-									s
-								</Full>
-							)}
-						</AnimatePresence>
-					</AnimateSharedLayout>
+					<AnimatePresence>
+						<Initial layout key={1}>
+							G
+						</Initial>
+						{!siteReady && (
+							<Full
+								layout
+								key={2}
+								variants={fullVariants}
+								initial="hidden"
+								animate="visible"
+								exit="hidden"
+							>
+								l
+							</Full>
+						)}
+						{!siteReady && (
+							<Full
+								layout
+								key={3}
+								variants={fullVariants}
+								initial="hidden"
+								animate="visible"
+								exit="hidden"
+							>
+								e
+							</Full>
+						)}
+						{!siteReady && (
+							<Full
+								layout
+								$mr="30px"
+								key={4}
+								variants={fullVariants}
+								initial="hidden"
+								animate="visible"
+								exit="hidden"
+							>
+								n
+							</Full>
+						)}
+						<Initial layout key={5}>
+							B
+						</Initial>
+						{!siteReady && (
+							<Full
+								layout
+								key={6}
+								variants={fullVariants}
+								initial="hidden"
+								animate="visible"
+								exit="hidden"
+							>
+								o
+							</Full>
+						)}
+						{!siteReady && (
+							<Full
+								layout
+								key={7}
+								variants={fullVariants}
+								initial="hidden"
+								animate="visible"
+								exit="hidden"
+							>
+								s
+							</Full>
+						)}
+						{!siteReady && (
+							<Full
+								layout
+								key={8}
+								variants={fullVariants}
+								initial="hidden"
+								animate="visible"
+								exit="hidden"
+							>
+								s
+							</Full>
+						)}
+					</AnimatePresence>
 				</LandingSequenceInner>
 			</InnerWrapper>
 		</LandingSequenceWrapper>

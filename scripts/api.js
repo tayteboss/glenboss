@@ -154,11 +154,7 @@ const getSiteData = async () => {
 							}
 						}
 						... on PageRecord {
-							pageSeo {
-								title
-								description
-								slug
-							}
+							slug
 						}
 					}
 					externalLink

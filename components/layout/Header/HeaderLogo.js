@@ -44,85 +44,83 @@ const HeaderLogo = ({ menuIsOpen }) => {
 		<HeaderLogoWrapper>
 			<Link href="/" passHref>
 				<LinkWrapper>
-					<AnimateSharedLayout>
-						<AnimatePresence>
-							<Initial layout key={1}>G</Initial>
-							{(!hasScrolled || menuIsOpen) && (
-								<Full
-									layout
-									key={2}
-									variants={fullVariants}
-									initial="hidden"
-									animate="visible"
-									exit="hidden"
-								>
-									l
-								</Full>
-							)}
-							{(!hasScrolled || menuIsOpen) && (
-								<Full
-									layout
-									key={3}
-									variants={fullVariants}
-									initial="hidden"
-									animate="visible"
-									exit="hidden"
-								>
-									e
-								</Full>
-							)}
-							{(!hasScrolled || menuIsOpen) && (
-								<Full
-									layout
-									$mr="4px"
-									key={4}
-									variants={fullVariants}
-									initial="hidden"
-									animate="visible"
-									exit="hidden"
-								>
-									n
-								</Full>
-							)}
-							<Initial layout key={5}>B</Initial>
-							{(!hasScrolled || menuIsOpen) && (
-								<Full
-									layout
-									key={6}
-									variants={fullVariants}
-									initial="hidden"
-									animate="visible"
-									exit="hidden"
-								>
-									o
-								</Full>
-							)}
-							{(!hasScrolled || menuIsOpen) && (
-								<Full
-									layout
-									key={7}
-									variants={fullVariants}
-									initial="hidden"
-									animate="visible"
-									exit="hidden"
-								>
-									s
-								</Full>
-							)}
-							{(!hasScrolled || menuIsOpen) && (
-								<Full
-									layout
-									key={8}
-									variants={fullVariants}
-									initial="hidden"
-									animate="visible"
-									exit="hidden"
-								>
-									s
-								</Full>
-							)}
-						</AnimatePresence>
-					</AnimateSharedLayout>
+					<AnimatePresence>
+						<Initial layout key={1}>G</Initial>
+						{(!hasScrolled || menuIsOpen) && (
+							<Full
+								layout
+								key={2}
+								variants={fullVariants}
+								initial="hidden"
+								animate="visible"
+								exit="hidden"
+							>
+								l
+							</Full>
+						)}
+						{(!hasScrolled || menuIsOpen) && (
+							<Full
+								layout
+								key={3}
+								variants={fullVariants}
+								initial="hidden"
+								animate="visible"
+								exit="hidden"
+							>
+								e
+							</Full>
+						)}
+						{(!hasScrolled || menuIsOpen) && (
+							<Full
+								layout
+								$mr="4px"
+								key={4}
+								variants={fullVariants}
+								initial="hidden"
+								animate="visible"
+								exit="hidden"
+							>
+								n
+							</Full>
+						)}
+						<Initial layout key={5}>B</Initial>
+						{(!hasScrolled || menuIsOpen) && (
+							<Full
+								layout
+								key={6}
+								variants={fullVariants}
+								initial="hidden"
+								animate="visible"
+								exit="hidden"
+							>
+								o
+							</Full>
+						)}
+						{(!hasScrolled || menuIsOpen) && (
+							<Full
+								layout
+								key={7}
+								variants={fullVariants}
+								initial="hidden"
+								animate="visible"
+								exit="hidden"
+							>
+								s
+							</Full>
+						)}
+						{(!hasScrolled || menuIsOpen) && (
+							<Full
+								layout
+								key={8}
+								variants={fullVariants}
+								initial="hidden"
+								animate="visible"
+								exit="hidden"
+							>
+								s
+							</Full>
+						)}
+					</AnimatePresence>
 				</LinkWrapper>
 			</Link>
 		</HeaderLogoWrapper>

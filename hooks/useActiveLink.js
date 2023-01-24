@@ -14,8 +14,10 @@ const useActiveLink = () => {
 			setActiveLink('Services');
 		} else if (router.pathname === '/partners') {
 			setActiveLink('Partners');
-		} else if (router.pathname === '/Contact') {
+		} else if (router.pathname === '/contact') {
 			setActiveLink('Contact');
+		} else {
+			setActiveLink(false);
 		}
 	}, [router]);
 
