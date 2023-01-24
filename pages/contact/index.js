@@ -19,6 +19,13 @@ const Page = ({ data, socialImages }) => {
 				title={seoTitle || 'Glen Boss'}
 				description={seoDescription || ''}
 			/>
+			<ContactInformation
+				email={siteData?.generalEmail}
+				phone={siteData?.generalPhone}
+				igLink={siteData?.instagramLink}
+				twLink={siteData?.twitterLink}
+			/>
+			<ContactSocials data={socialImages} zIndex="2" />
 		</PageWrapper>
 	);
 };
