@@ -23,8 +23,8 @@ const ContactInformation = ({ email, phone, igLink, twLink }) => {
 					<ContactCard
 						title="Have a general enquiry?"
 						links={[
-							{ title: email, link: email },
-							{ title: phone, link: phone },
+							{ title: email, link: `mailto:${email}` },
+							{ title: phone, link: `tel:${phone}` },
 						]}
 					/>
 					<ContactCard

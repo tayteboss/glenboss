@@ -14,11 +14,15 @@ const Main = styled.main`
 	padding-top: var(--header-h);
 `;
 
-const Layout = ({ children, siteReady, hasVisited }) => {
+const Layout = ({ children, siteReady, hasVisited, appCursorRefresh }) => {
 	const [menuIsOpen, setMenuIsOpen] = useState(false);
 	const [cursorRefresh, setCursorRefresh] = useState(1);
 
 	const hasScrolled = useScrolled(100);
+
+	useEffect(() => {
+		setCursorRefresh(cursorRefresh + 1);
+	}, [appCursorRefresh]);
 
 	useEffect(() => {
 		setCursorRefresh(cursorRefresh + 1);

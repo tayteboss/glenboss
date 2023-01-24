@@ -12,6 +12,8 @@ import use1vh from '../hooks/use1vh';
 function App({ Component, pageProps }) {
 	const [siteReady, setSiteReady] = useState(false);
 	const [hasVisited, setHasVisited] = useState(false);
+	const [appCursorRefresh, setAppCursorRefresh] = useState(0);
+
 	const router = useRouter();
 
 	const handleExitComplete = () => {
@@ -57,15 +59,27 @@ function App({ Component, pageProps }) {
 		}
 	}, []);
 
+	const handleCursorRefresh = () => {
+		setAppCursorRefresh(appCursorRefresh + 1);
+	};
+
 	return (
 		<>
 			<GlobalStyles />
 			<ThemeProvider theme={theme}>
-				<Layout siteReady={siteReady} hasVisited={hasVisited}>
+				<Layout
+					siteReady={siteReady}
+					hasVisited={hasVisited}
+					appCursorRefresh={appCursorRefresh}
+				>
 					<AnimatePresence
 						onExitComplete={() => handleExitComplete()}
 					>
-						<Component {...pageProps} key={router.asPath} />
+						<Component
+							{...pageProps}
+							key={router.asPath}
+							handleCursorRefresh={() => handleCursorRefresh()}
+						/>
 					</AnimatePresence>
 				</Layout>
 			</ThemeProvider>

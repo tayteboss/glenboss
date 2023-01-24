@@ -1,8 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import { useContext, useEffect } from 'react';
 import styled from 'styled-components';
 import RichText from '../../common/RichText';
-import { CursorContext } from '../../layout/Layout';
 import Cross from '../../Svgs/Cross';
 
 const ContentModalWrapper = styled(motion.div)`
@@ -148,15 +146,13 @@ const triggerIconVariants = {
 	},
 };
 
-const ContentModal = ({ data, handleCloseModal }) => {
-	const { cursorRefresh, setCursorRefresh } = useContext(CursorContext);
-
-	useEffect(() => {
-		setCursorRefresh(cursorRefresh + 1);
-	}, []);
+const ContentModal = ({ data, handleCloseModal, handleCursorRefresh }) => {
+	const handleExitComplete = () => {
+		handleCursorRefresh();
+	};
 
 	return (
-		<AnimatePresence>
+		<AnimatePresence onExitComplete={() => handleExitComplete()}>
 			{data && (
 				<>
 					<ContentModalWrapper

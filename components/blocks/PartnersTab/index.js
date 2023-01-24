@@ -21,7 +21,7 @@ const PartnersTabWrapper = styled.section`
 	}
 `;
 
-const PartnersTab = ({ data, zIndex }) => {
+const PartnersTab = ({ data, zIndex, handleCursorRefresh }) => {
 	const [isHoveredIndex, setIsHoveredIndex] = useState(false);
 
 	return (
@@ -35,6 +35,7 @@ const PartnersTab = ({ data, zIndex }) => {
 				data={data?.partners}
 				setIsHoveredIndex={setIsHoveredIndex}
 				isHoveredIndex={isHoveredIndex}
+				handleCursorRefresh={handleCursorRefresh}
 			/>
 			<PartnersArtwork data={data?.partners} index={isHoveredIndex} />
 		</PartnersTabWrapper>

@@ -203,7 +203,7 @@ export const GlobalStyles = createGlobalStyle`
 
 	.type-extra-large {
 		font-size: ${theme.size.extraLarge};
-		line-height: 10rem;
+		line-height: 10.7rem;
 
 		@media ${theme.mediaBreakpoints.tabletLandscape}
 		{

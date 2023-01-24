@@ -37,6 +37,8 @@ const Img = styled.img`
 `;
 
 const PartnerLogos = ({ data, zIndex }) => {
+	const moreLogos = data?.logos.concat(data.logos);
+
 	const { ref, inView } = useInView({
 		triggerOnce: true,
 		threshold: 0.2,
@@ -58,15 +60,17 @@ const PartnerLogos = ({ data, zIndex }) => {
 					</Title>
 				</PartnerLogosInner>
 			</InnerWrapper>
-			<LogosTickerWrapper>
-				<Marquee pauseOnHover gradient={false} speed={50}>
-					{data?.logos.map((item, index) => (
-						<MediaWrapper>
-							<Img src={item?.image?.url} key={index} />
-						</MediaWrapper>
-					))}
-				</Marquee>
-			</LogosTickerWrapper>
+			{moreLogos.length > 0 && (
+				<LogosTickerWrapper>
+					<Marquee pauseOnHover gradient={false} speed={50}>
+						{moreLogos.map((item, index) => (
+							<MediaWrapper>
+								<Img src={item?.image?.url} key={index} />
+							</MediaWrapper>
+						))}
+					</Marquee>
+				</LogosTickerWrapper>
+			)}
 		</PartnerLogosWrapper>
 	);
 };

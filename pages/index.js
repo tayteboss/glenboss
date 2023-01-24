@@ -8,7 +8,7 @@ import ContactTab from '../components/blocks/ContactTab';
 
 const PageWrapper = styled.div``;
 
-const Page = ({ data }) => {
+const Page = ({ data, handleCursorRefresh }) => {
 	const seoTitle = data?.pageSeo[0]?.title;
 	const seoDescription = data?.pageSeo[0]?.description;
 
@@ -20,7 +20,11 @@ const Page = ({ data }) => {
 			/>
 			<PageHeader data={data?.pageHeader[0]} zIndex="1" />
 			<ServicesTab data={data?.servicesTab[0]} zIndex="2" />
-			<PartnersTab data={data?.partnersTab[0]} zIndex="3" />
+			<PartnersTab
+				data={data?.partnersTab[0]}
+				zIndex="3"
+				handleCursorRefresh={handleCursorRefresh}
+			/>
 			<ContactTab data={data?.contactTab[0]} zIndex="4" />
 		</PageWrapper>
 	);
