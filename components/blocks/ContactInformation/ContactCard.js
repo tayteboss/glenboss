@@ -34,7 +34,7 @@ const ContactCard = ({ title, links }) => {
 			<LinksWrapper>
 				{links.map((item, index) => (
 					<Link
-						href={item.link}
+						href={item?.link ? item?.link : '/'}
 						target="_blank"
 						key={index}
 						className="type-h1 large-link-hover"

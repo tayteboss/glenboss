@@ -48,7 +48,7 @@ const LinkTag = styled.a`
 `;
 
 const FooterSecondary = ({ secondaryLinks, inView }) => {
-	const hasLinks = secondaryLinks.length > 0;
+	const hasLinks = secondaryLinks?.length > 0;
 
 	return (
 		<FooterSecondaryWrapper>
