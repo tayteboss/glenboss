@@ -28,8 +28,6 @@ const Link = styled.a`
 `;
 
 const ContactCard = ({ title, links }) => {
-	console.log('links', links);
-
 	return (
 		<ContactCardWrapper>
 			<Title>{title && title}</Title>

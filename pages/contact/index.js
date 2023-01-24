@@ -13,8 +13,6 @@ const Page = ({ data, socialImages }) => {
 	const seoTitle = data?.pageSeo[0]?.title;
 	const seoDescription = data?.pageSeo[0]?.description;
 
-	console.log('siteData', siteData);
-
 	return (
 		<PageWrapper>
 			<NextSeo
