@@ -1,7 +1,7 @@
 import styled from 'styled-components';
+import { useInView } from 'react-intersection-observer';
 import Marquee from 'react-fast-marquee';
 import InnerWrapper from '../../common/InnerWrapper';
-import MediaStack from '../../elements/MediaStack';
 
 const PartnerLogosWrapper = styled.section`
 	padding-top: 80px;
@@ -37,8 +37,20 @@ const Img = styled.img`
 `;
 
 const PartnerLogos = ({ data, zIndex }) => {
+	const { ref, inView } = useInView({
+		triggerOnce: true,
+		threshold: 0.2,
+		rootMargin: '-5%',
+	});
+
 	return (
-		<PartnerLogosWrapper className="tab-radius" $zIndex={zIndex}>
+		<PartnerLogosWrapper
+			ref={ref}
+			className={`tab-radius view-element-fade-in ${
+				inView ? 'view-element-fade-in--in-view' : ''
+			}`}
+			$zIndex={zIndex}
+		>
 			<InnerWrapper>
 				<PartnerLogosInner>
 					<Title className="type-p">

@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { useInView } from 'react-intersection-observer';
 import styled from 'styled-components';
 
 const PartnerListCardWrapper = styled.div`
@@ -31,9 +32,18 @@ const Title = styled.h3`
 `;
 
 const PartnerListCard = ({ data, handleOpenModal }) => {
+	const { ref, inView } = useInView({
+		triggerOnce: true,
+		threshold: 0.2,
+		rootMargin: '-5%',
+	});
+
 	return (
 		<PartnerListCardWrapper
-			className="cursor-link"
+			ref={ref}
+			className={`cursor-link view-element-fade-in ${
+				inView ? 'view-element-fade-in--in-view' : ''
+			}`}
 			onClick={() => handleOpenModal(data)}
 		>
 			<ImageWrapper>

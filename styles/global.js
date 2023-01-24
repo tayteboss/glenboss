@@ -257,6 +257,36 @@ export const GlobalStyles = createGlobalStyle`
 		}
 	}
 
+	.large-link-hover {
+		position: relative;
+
+		transition: all var(--transition-speed-default) var(--transition-ease);
+
+		&:hover {
+			transform: translateX(20px);
+
+			&::before {
+				opacity: 1;
+				transform: translateX(-12px);
+			}
+		}
+
+		&::before {
+			content: '';
+			position: absolute;
+			top: 16px;
+			left: -8px;
+			background: ${theme.colours.black};
+			border-radius: 50%;
+			height: 10px;
+			width: 10px;
+			opacity: 0;
+			transform: translateX(8px);
+
+			transition: all var(--transition-speed-default) var(--transition-ease);
+		}
+	}
+
 	.tab-radius {
 		border-top-left-radius: 16px;
 		border-top-right-radius: 16px;

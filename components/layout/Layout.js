@@ -11,7 +11,6 @@ import LandingSequence from '../blocks/LandingSequence';
 export const CursorContext = createContext();
 
 const Main = styled.main`
-	min-height: 150vh;
 	padding-top: var(--header-h);
 `;
 

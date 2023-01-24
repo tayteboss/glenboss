@@ -28,8 +28,6 @@ const Page = ({ data, partners }) => {
 		setModalData(data);
 	};
 
-	console.log('modalData', modalData);
-
 	useEffect(() => {
 		if (modalData) {
 			useNoScroll(true);
