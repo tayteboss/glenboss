@@ -32,7 +32,13 @@ const Page = ({ data, partners, handleCursorRefresh }) => {
 			useNoScroll(false);
 		}
 
-		handleCursorRefresh();
+		const timer = setTimeout(() => {
+			handleCursorRefresh();
+		}, 500);
+
+		return () => {
+			clearTimeout(timer);
+		};
 	}, [modalData]);
 
 	return (

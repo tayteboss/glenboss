@@ -148,7 +148,9 @@ const triggerIconVariants = {
 
 const ContentModal = ({ data, handleCloseModal, handleCursorRefresh }) => {
 	const handleExitComplete = () => {
-		handleCursorRefresh();
+		setTimeout(() => {
+			handleCursorRefresh();
+		}, 500);
 	};
 
 	return (
