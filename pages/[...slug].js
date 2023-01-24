@@ -20,6 +20,15 @@ const Page = ({ pageTransitionVariants, data }) => {
 			<NextSeo
 				title={seoTitle || 'Glen Boss'}
 				description={seoDescription}
+				openGraph={{
+					images: [
+						{
+							url: 'ogg-image.jpg',
+							width: 800,
+							height: 600,
+						},
+					],
+				}}
 			/>
 			<PageContent data={data?.pageContent} />
 		</PageWrapper>

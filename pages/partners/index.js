@@ -46,6 +46,15 @@ const Page = ({ data, partners, handleCursorRefresh }) => {
 			<NextSeo
 				title={seoTitle || 'Glen Boss'}
 				description={seoDescription || ''}
+				openGraph={{
+					images: [
+						{
+							url: 'ogg-image.jpg',
+							width: 800,
+							height: 600,
+						},
+					],
+				}}
 			/>
 			<PageHeader data={data?.pageHeader[0]} zIndex="1" />
 			<PartnerLogos data={data?.partnerLogosTicker[0]} zIndex="2" />

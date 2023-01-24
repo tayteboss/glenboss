@@ -18,6 +18,15 @@ const Page = ({ data, socialImages }) => {
 			<NextSeo
 				title={seoTitle || 'Glen Boss'}
 				description={seoDescription || ''}
+				openGraph={{
+					images: [
+						{
+							url: 'ogg-image.jpg',
+							width: 800,
+							height: 600,
+						},
+					],
+				}}
 			/>
 			<ContactInformation
 				email={siteData?.generalEmail}
