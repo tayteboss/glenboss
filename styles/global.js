@@ -80,6 +80,10 @@ export const GlobalStyles = createGlobalStyle`
 
 		&.no-scroll {
 			overflow-y: hidden;
+			
+			body {
+				overflow-y: hidden;
+			}
 		}
 	}
 

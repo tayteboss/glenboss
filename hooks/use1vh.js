@@ -4,7 +4,7 @@ const use1vh = () => {
 	useEffect(() => {
 		const set1vh = () => {
 			const vh = document.documentElement.clientHeight * 0.01;
-			document.documentElement.style.setProperty('--vh', '${vh}px');
+			document.documentElement.style.setProperty('--vh', `${vh}px`);
 		};
 		set1vh();
 		window.addEventListener('resize', set1vh);

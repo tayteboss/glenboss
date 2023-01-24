@@ -44,6 +44,9 @@ const MediaWrapper = styled.div`
 `;
 
 const ContactGallery = ({ data }) => {
+	const [sliderOneData, setSliderOneData] = useState(false);
+	const [sliderTwoData, setSliderTwoData] = useState(false);
+
 	function shuffle(array) {
 		let currentIndex = array.length;
 		let randomIndex;
@@ -64,8 +67,10 @@ const ContactGallery = ({ data }) => {
 		return array;
 	}
 
-	const sliderOne = shuffle(data);
-	const sliderTwo = shuffle(data);
+	useEffect(() => {
+		setSliderOneData(shuffle(data));
+		setSliderTwoData(shuffle(data));
+	}, [data]);
 
 	const [maxTransform, setMaxTransform] = useState(null);
 
@@ -109,28 +114,32 @@ const ContactGallery = ({ data }) => {
 				inView ? 'view-element-fade-in--in-view' : ''
 			}`}
 		>
-			<OverflowWrapper>
-				<SliderWrapper ref={sliderRef}>
-					<Slider style={{ x }}>
-						{sliderOne.map((item, index) => (
-							<MediaWrapper key={index}>
-								<MediaStack data={item} />
-							</MediaWrapper>
-						))}
-					</Slider>
-				</SliderWrapper>
-			</OverflowWrapper>
-			<OverflowWrapper>
-				<SliderWrapper ref={sliderRef}>
-					<Slider style={{ x: xTwo }}>
-						{sliderTwo.map((item, index) => (
-							<MediaWrapper key={index}>
-								<MediaStack data={item} />
-							</MediaWrapper>
-						))}
-					</Slider>
-				</SliderWrapper>
-			</OverflowWrapper>
+			{sliderOneData && (
+				<OverflowWrapper>
+					<SliderWrapper ref={sliderRef}>
+						<Slider style={{ x }}>
+							{sliderOneData.map((item, index) => (
+								<MediaWrapper key={index}>
+									<MediaStack data={item} />
+								</MediaWrapper>
+							))}
+						</Slider>
+					</SliderWrapper>
+				</OverflowWrapper>
+			)}
+			{sliderTwoData && (
+				<OverflowWrapper>
+					<SliderWrapper ref={sliderRef}>
+						<Slider style={{ x: xTwo }}>
+							{sliderTwoData.map((item, index) => (
+								<MediaWrapper key={index}>
+									<MediaStack data={item} />
+								</MediaWrapper>
+							))}
+						</Slider>
+					</SliderWrapper>
+				</OverflowWrapper>
+			)}
 		</ContactGalleryWrapper>
 	);
 };

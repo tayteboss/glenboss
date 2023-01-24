@@ -14,7 +14,7 @@ const ContentModalWrapper = styled(motion.div)`
 	width: 70vw;
 	max-width: 950px;
 	z-index: 200;
-	height: 100vh;
+	height: calc(var(--vh) * 100);
 	box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
 	overflow-y: auto;
 
@@ -32,7 +32,7 @@ const CloseTriggerPanel = styled(motion.div)`
 	top: 0;
 	left: 0;
 	width: 100vw;
-	height: 100vh;
+	height: calc(var(--vh) * 100);
 	background: var(--colour-black);
 	z-index: 199;
 `;
@@ -73,6 +73,7 @@ const CloseTriggerIcon = styled(motion.button)`
 	align-items: center;
 	z-index: 201;
 	border-radius: 100%;
+	box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
 
 	transition: all var(--transition-speed-default) var(--transition-ease);
 

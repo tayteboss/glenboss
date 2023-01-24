@@ -7,7 +7,7 @@ const options = require('../../../json/options.json');
 const MenuListWrapper = styled.div`
 	grid-column: span 6;
 	position: relative;
-	height: 100vh;
+	height: calc(var(--vh) * 100);
 
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 		height: auto;

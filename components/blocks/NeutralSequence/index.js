@@ -6,7 +6,7 @@ const NeutralSequenceWrapper = styled(motion.div)`
 	top: 0;
 	left: 0;
 	width: 100%;
-	height: 100vh;
+	height: calc(var(--vh) * 100);
 	background: var(--colour-black);
 	z-index: 150;
 `;

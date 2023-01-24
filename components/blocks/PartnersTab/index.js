@@ -6,7 +6,7 @@ import PartnersGallery from './PartnersGallery';
 
 const PartnersTabWrapper = styled.section`
 	background: var(--colour-system-white-grey-50);
-	height: 100vh;
+	height: calc(var(--vh) * 100);
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;

@@ -1,4 +1,5 @@
 import { NextSeo } from 'next-seo';
+import { useEffect } from 'react';
 import styled from 'styled-components';
 import ContactInformation from '../../components/blocks/ContactInformation';
 import ContactSocials from '../../components/blocks/ContactSocials';
@@ -12,6 +13,10 @@ const Page = ({ data, socialImages }) => {
 	const siteData = options?.data?.siteInformation;
 	const seoTitle = data?.pageSeo[0]?.title;
 	const seoDescription = data?.pageSeo[0]?.description;
+
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
 
 	return (
 		<PageWrapper>

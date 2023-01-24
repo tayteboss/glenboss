@@ -10,7 +10,7 @@ const ServicesGalleryWrapper = styled.div`
 	padding: 160px 0 64px;
 
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
-		padding: 80px 0 32px;
+		padding: 80px 0 64px;
 	}
 `;
 

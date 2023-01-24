@@ -1,4 +1,4 @@
-import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import InnerWrapper from '../../common/InnerWrapper';
@@ -9,7 +9,7 @@ const LandingSequenceWrapper = styled(motion.div)`
 	top: 0;
 	left: 0;
 	width: 100%;
-	height: 100vh;
+	height: calc(var(--vh) * 100);
 	z-index: 200;
 	background: var(--colour-black);
 
@@ -37,7 +37,7 @@ const LandingSequenceInner = styled.div`
 	bottom: 0;
 	left: 0;
 	align-items: flex-end;
-	height: 100vh;
+	height: calc(var(--vh) * 100);
 	position: relative;
 	padding: 16px 0;
 `;
