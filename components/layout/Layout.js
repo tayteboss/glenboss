@@ -8,6 +8,7 @@ import Cursor from '../elements/Cursor';
 import useScrolled from '../../hooks/useScrolled';
 import LandingSequence from '../blocks/LandingSequence';
 import PageTransitionCover from '../elements/PageTransitionCover';
+import ComingSoon from './ComingSoon';
 
 export const CursorContext = createContext();
 
@@ -64,18 +65,23 @@ const Layout = ({
 
 	return (
 		<CursorContext.Provider value={{ cursorRefresh, setCursorRefresh }}>
-			{!hasVisited && <LandingSequence siteReady={siteReady} />}
-			{siteReady && (
+			{false && (
 				<>
-					<Header
-						setMenuIsOpen={setMenuIsOpen}
-						menuIsOpen={menuIsOpen}
-					/>
-					<Menu isActive={menuIsOpen} />
-					<Main>{children}</Main>
-					<Footer />
+					{!hasVisited && <LandingSequence siteReady={siteReady} />}
+					{siteReady && (
+						<>
+							<Header
+								setMenuIsOpen={setMenuIsOpen}
+								menuIsOpen={menuIsOpen}
+							/>
+							<Menu isActive={menuIsOpen} />
+							<Main>{children}</Main>
+							<Footer />
+						</>
+					)}
 				</>
 			)}
+			<ComingSoon />
 			<Cursor cursorRefresh={cursorRefresh} />
 		</CursorContext.Provider>
 	);

@@ -32,8 +32,6 @@ const wrapperVariants = {
 };
 
 const PageTransitionCover = ({ isActive }) => {
-	console.log('isActive', isActive);
-
 	return (
 		<AnimatePresence>
 			{isActive && (
