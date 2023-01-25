@@ -39,7 +39,7 @@ const TabHeader = ({ data, useDarkTheme }) => {
 	});
 
 	return (
-		<TabHeaderWrapper ref={ref}>
+		<TabHeaderWrapper ref={ref} className="tab-header">
 			<InnerWrapper>
 				<TabHeaderInner>
 					<TabHeaderTitle

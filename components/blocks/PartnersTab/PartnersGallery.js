@@ -1,17 +1,21 @@
 import styled from 'styled-components';
 import Marquee from 'react-fast-marquee';
 import { useInView } from 'react-intersection-observer';
+import Link from 'next/link';
 
 const PartnersGalleryWrapper = styled.div`
 	position: relative;
 	z-index: 2;
 	padding-bottom: 50px;
+	mix-blend-mode: difference;
+	color: white;
 `;
 
-const Title = styled.h1`
+const Title = styled.a`
 	margin-right: 64px;
-	opacity: ${(props) => (props.$isActive ? 1 : 0.3)};
-	color: var(--colour-black);
+	opacity: ${(props) => (props.$isActive ? 1 : 0)};
+	color: var(--colour-white);
+	text-decoration: none;
 
 	transition: all var(--transition-speed-slow) var(--transition-ease);
 `;
@@ -45,24 +49,27 @@ const PartnersGallery = ({
 				<Marquee
 					pauseOnHover
 					gradient={false}
-					speed={120}
+					speed={160}
 					onCycleComplete={() => handleCycleComplete()}
 				>
 					{data.map((item, index) => (
-						<Title
-							key={index}
-							className="type-extra-large cursor-large-link"
-							onMouseOver={() =>
-								setIsHoveredIndex(index.toString())
-							}
-							onMouseOut={() => setIsHoveredIndex(false)}
-							$isActive={
-								index.toString() === isHoveredIndex ||
-								isHoveredIndex === false
-							}
-						>
-							{item?.name}
-						</Title>
+						<Link href={item?.url} passHref>
+							<Title
+								target="_blank"
+								key={index}
+								className="type-extra-large cursor-large-link"
+								onMouseOver={() =>
+									setIsHoveredIndex(index.toString())
+								}
+								onMouseOut={() => setIsHoveredIndex(false)}
+								$isActive={
+									index.toString() === isHoveredIndex ||
+									isHoveredIndex === false
+								}
+							>
+								{item?.name}
+							</Title>
+						</Link>
 					))}
 				</Marquee>
 			)}
