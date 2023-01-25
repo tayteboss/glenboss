@@ -348,6 +348,10 @@ export const GlobalStyles = createGlobalStyle`
 		}
 	}
 
+	.performance {
+		-webkit-transform: translateZ(0);
+	}
+
 	::placeholder {
 		color: currentcolor;
 		opacity: 1;
