@@ -19,7 +19,7 @@ const RichText = ({ className, data, color }) => {
 							// 	key={key}
 							// 	scroll={false}
 							// >
-								<a href={node.url} target={'_blank'} key={key}>{children}</a>
+								<a href={node.url} target="_blank" key={key}>{children}</a>
 							// </Link>
 						);
 					}),

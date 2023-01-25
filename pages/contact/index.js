@@ -10,13 +10,19 @@ const options = require('../../json/options.json');
 
 const PageWrapper = styled(motion.div)``;
 
-const Page = ({ data, socialImages, pageTransitionVariants }) => {
+const Page = ({
+	data,
+	socialImages,
+	pageTransitionVariants,
+	handleCursorRefresh,
+}) => {
 	const siteData = options?.data?.siteInformation;
 	const seoTitle = data?.pageSeo[0]?.title;
 	const seoDescription = data?.pageSeo[0]?.description;
 
 	useEffect(() => {
 		window.scrollTo(0, 0);
+		handleCursorRefresh();
 	}, []);
 
 	return (
