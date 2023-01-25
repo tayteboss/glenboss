@@ -1,17 +1,23 @@
+import { motion } from 'framer-motion';
 import { NextSeo } from 'next-seo';
 import styled from 'styled-components';
 import PageHeader from '../../components/blocks/PageHeader';
 import ServicesList from '../../components/blocks/ServicesList';
 import { getServicesPage } from '../../lib/datocms';
 
-const PageWrapper = styled.div``;
+const PageWrapper = styled(motion.div)``;
 
-const Page = ({ data }) => {
+const Page = ({ data, pageTransitionVariants }) => {
 	const seoTitle = data?.pageSeo[0]?.title;
 	const seoDescription = data?.pageSeo[0]?.description;
 
 	return (
-		<PageWrapper>
+		<PageWrapper
+			variants={pageTransitionVariants}
+			initial="hidden"
+			animate="visible"
+			exit="hidden"
+		>
 			<NextSeo
 				title={seoTitle || 'Glen Boss'}
 				description={seoDescription || ''}

@@ -7,14 +7,22 @@ import Menu from './Menu';
 import Cursor from '../elements/Cursor';
 import useScrolled from '../../hooks/useScrolled';
 import LandingSequence from '../blocks/LandingSequence';
+import PageTransitionCover from '../elements/PageTransitionCover';
 
 export const CursorContext = createContext();
 
 const Main = styled.main`
 	padding-top: var(--header-h);
+	min-height: 100vh;
 `;
 
-const Layout = ({ children, siteReady, hasVisited, appCursorRefresh }) => {
+const Layout = ({
+	children,
+	siteReady,
+	hasVisited,
+	appCursorRefresh,
+	isPageLoading,
+}) => {
 	const [menuIsOpen, setMenuIsOpen] = useState(false);
 	const [cursorRefresh, setCursorRefresh] = useState(1);
 

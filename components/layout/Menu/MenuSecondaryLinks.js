@@ -32,7 +32,12 @@ const MenuSecondaryLinks = () => {
 		<MenuSecondaryLinksWrapper>
 			{hasLinks &&
 				secondaryLinks.map((item, index) => (
-					<Link href={cleanUrl(item)} passHref key={index}>
+					<Link
+						href={cleanUrl(item)}
+						passHref
+						key={index}
+						scroll={false}
+					>
 						<LinkTag className="type-sm">
 							{item.linkTitle && item.linkTitle}
 						</LinkTag>

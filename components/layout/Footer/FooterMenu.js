@@ -91,7 +91,7 @@ const FooterMenu = ({ data, inView }) => {
 				>
 					{data.map((item, index) => (
 						<MotionElement key={index} variants={childVariants}>
-							<Link href={cleanUrl(item)} passHref>
+							<Link href={cleanUrl(item)} passHref scroll={false}>
 								<FooterMenuLink
 									$isActive={activeLink === item.linkTitle}
 									className="type-h1"

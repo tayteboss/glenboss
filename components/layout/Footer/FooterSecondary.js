@@ -68,6 +68,7 @@ const FooterSecondary = ({ secondaryLinks, inView }) => {
 									href={cleanUrl(item)}
 									passHref
 									key={index}
+									scroll={false}
 								>
 									<LinkTag className="type-esm">
 										{item.linkTitle && item.linkTitle}

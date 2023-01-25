@@ -1,19 +1,25 @@
 import { NextSeo } from 'next-seo';
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 import PageHeader from '../components/blocks/PageHeader';
 import { getHomePage, getSiteData } from '../lib/datocms';
 import ServicesTab from '../components/blocks/ServicesTab';
 import PartnersTab from '../components/blocks/PartnersTab';
 import ContactTab from '../components/blocks/ContactTab';
 
-const PageWrapper = styled.div``;
+const PageWrapper = styled(motion.div)``;
 
-const Page = ({ data, handleCursorRefresh }) => {
+const Page = ({ data, handleCursorRefresh, pageTransitionVariants }) => {
 	const seoTitle = data?.pageSeo[0]?.title;
 	const seoDescription = data?.pageSeo[0]?.description;
 
 	return (
-		<PageWrapper>
+		<PageWrapper
+			variants={pageTransitionVariants}
+			initial="hidden"
+			animate="visible"
+			exit="hidden"
+		>
 			<NextSeo
 				title={seoTitle || 'Glen Boss'}
 				description={seoDescription}

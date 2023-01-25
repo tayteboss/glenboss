@@ -42,7 +42,7 @@ const HeaderLogo = ({ menuIsOpen }) => {
 
 	return (
 		<HeaderLogoWrapper>
-			<Link href="/" passHref>
+			<Link href="/" passHref scroll={false}>
 				<LinkWrapper>
 					<AnimatePresence>
 						<Initial layout key={1}>G</Initial>

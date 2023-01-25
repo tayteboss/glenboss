@@ -4,20 +4,33 @@ import Cookies from 'js-cookie';
 import { ThemeProvider } from 'styled-components';
 import { useRouter } from 'next/router';
 import { AnimatePresence } from 'framer-motion';
+import ReactGA from 'react-ga';
 import Layout from '../components/layout/Layout';
 import { theme } from '../styles/theme';
 import { GlobalStyles } from '../styles/global';
 import use1vh from '../hooks/use1vh';
 
+const pageTransitionVariants = {
+	hidden: { opacity: 0, transition: { duration: 0.3 } },
+	visible: { opacity: 1, transition: { duration: 0.3, delay: 0.25 } },
+};
+
 function App({ Component, pageProps }) {
 	const [siteReady, setSiteReady] = useState(false);
 	const [hasVisited, setHasVisited] = useState(false);
 	const [appCursorRefresh, setAppCursorRefresh] = useState(0);
+	const [isPageLoading, setIsPageLoading] = useState(false);
 
 	const router = useRouter();
+	const routerEvents = router.events;
 
 	const handleExitComplete = () => {
 		window.scrollTo(0, 0);
+	};
+
+	const handleRouteChangeComplete = () => {
+		ReactGA.pageview(window.location.pathname + window.location.search);
+		setIsPageLoading(false);
 	};
 
 	use1vh();
@@ -57,6 +70,18 @@ function App({ Component, pageProps }) {
 				clearTimeout(timer2);
 			};
 		}
+
+		ReactGA.initialize('G-VLZCPMNN34');
+
+		routerEvents.on('routeChangeStart', () => {
+			setIsPageLoading(true);
+		});
+
+		routerEvents.on('routeChangeComplete', handleRouteChangeComplete);
+
+		return () => {
+			routerEvents.off('routeChangeComplete', handleRouteChangeComplete);
+		};
 	}, []);
 
 	const handleCursorRefresh = () => {
@@ -71,14 +96,17 @@ function App({ Component, pageProps }) {
 					siteReady={siteReady}
 					hasVisited={hasVisited}
 					appCursorRefresh={appCursorRefresh}
+					isPageLoading={isPageLoading}
 				>
 					<AnimatePresence
+						mode="wait"
 						onExitComplete={() => handleExitComplete()}
 					>
 						<Component
 							{...pageProps}
 							key={router.asPath}
 							handleCursorRefresh={() => handleCursorRefresh()}
+							pageTransitionVariants={pageTransitionVariants}
 						/>
 					</AnimatePresence>
 				</Layout>

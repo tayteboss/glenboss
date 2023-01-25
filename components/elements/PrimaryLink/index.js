@@ -79,7 +79,11 @@ const PrimaryLink = ({
 	target = '_self',
 }) => {
 	return (
-		<Link href={dataOverride ? dataOverride.link : cleanUrl(data)} passHref>
+		<Link
+			href={dataOverride ? dataOverride.link : cleanUrl(data)}
+			passHref
+			scroll={false}
+		>
 			<PrimaryLinkWrapper
 				$isDark={useDarkTheme}
 				className="primary-link"

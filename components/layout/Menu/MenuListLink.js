@@ -58,7 +58,7 @@ const MenuListLink = ({ data, index }) => {
 	return (
 		<MenuListLinkWrapper>
 			{linkUrl && (
-				<Link href={cleanUrl(data)} passHref>
+				<Link href={cleanUrl(data)} passHref scroll={false}>
 					<ListLink
 						className="type-extra-large cursor-large-link"
 						$isActive={activeLink === linkTitle}

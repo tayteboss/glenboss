@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import { NextSeo } from 'next-seo';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
@@ -8,9 +9,14 @@ import PartnersList from '../../components/blocks/PartnersList';
 import useNoScroll from '../../hooks/useNoScroll';
 import { getPartners, getPartnersPage } from '../../lib/datocms';
 
-const PageWrapper = styled.div``;
+const PageWrapper = styled(motion.div)``;
 
-const Page = ({ data, partners, handleCursorRefresh }) => {
+const Page = ({
+	data,
+	partners,
+	handleCursorRefresh,
+	pageTransitionVariants,
+}) => {
 	const [modalData, setModalData] = useState(false);
 
 	const seoTitle = data?.pageSeo[0]?.title;
@@ -42,7 +48,12 @@ const Page = ({ data, partners, handleCursorRefresh }) => {
 	}, [modalData]);
 
 	return (
-		<PageWrapper>
+		<PageWrapper
+			variants={pageTransitionVariants}
+			initial="hidden"
+			animate="visible"
+			exit="hidden"
+		>
 			<NextSeo
 				title={seoTitle || 'Glen Boss'}
 				description={seoDescription || ''}

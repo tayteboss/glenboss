@@ -22,7 +22,12 @@ const MenuContactBlock = ({ title, links }) => {
 		<MenuContactBlockWrapper>
 			<Title className="type-sm">{title && title}</Title>
 			{links.map((item, index) => (
-				<Link href={item?.link ? item?.link : '/'} passHref key={index}>
+				<Link
+					href={item?.link ? item?.link : '/'}
+					passHref
+					key={index}
+					scroll={false}
+				>
 					<LinkTag className="type-sm sm-link-hover" target="_blank">
 						{item.title && item.title}
 					</LinkTag>

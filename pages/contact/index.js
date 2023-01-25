@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import { NextSeo } from 'next-seo';
 import { useEffect } from 'react';
 import styled from 'styled-components';
@@ -7,9 +8,9 @@ import { getContactPage, getHomePage } from '../../lib/datocms';
 
 const options = require('../../json/options.json');
 
-const PageWrapper = styled.div``;
+const PageWrapper = styled(motion.div)``;
 
-const Page = ({ data, socialImages }) => {
+const Page = ({ data, socialImages, pageTransitionVariants }) => {
 	const siteData = options?.data?.siteInformation;
 	const seoTitle = data?.pageSeo[0]?.title;
 	const seoDescription = data?.pageSeo[0]?.description;
@@ -19,7 +20,12 @@ const Page = ({ data, socialImages }) => {
 	}, []);
 
 	return (
-		<PageWrapper>
+		<PageWrapper
+			variants={pageTransitionVariants}
+			initial="hidden"
+			animate="visible"
+			exit="hidden"
+		>
 			<NextSeo
 				title={seoTitle || 'Glen Boss'}
 				description={seoDescription || ''}

@@ -52,7 +52,7 @@ const HeaderMenuLinks = ({ data }) => {
 			exit="hidden"
 			key={index}
 		>
-			<Link href={cleanUrl(item)} passHref>
+			<Link href={cleanUrl(item)} passHref scroll={false}>
 				<HeaderMenuLink $isActive={activeLink === item.linkTitle}>
 					{item.linkTitle && item.linkTitle}
 				</HeaderMenuLink>
