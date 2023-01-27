@@ -5,6 +5,7 @@ import { useInView } from 'react-intersection-observer';
 import InnerWrapper from '../../common/InnerWrapper';
 import MediaStack from '../../elements/MediaStack';
 import Chevron from '../../Svgs/Chevron';
+import Link from 'next/link';
 
 const ServicesGalleryWrapper = styled.div`
 	padding: 160px 0 64px;
@@ -67,6 +68,10 @@ const Embla = styled.div`
 const EmblaContainer = styled.div`
 	display: flex;
 	background: var(--colour-white);
+`;
+
+const LinkTag = styled.a`
+	text-decoration: none;
 `;
 
 const EmblaSlider = styled.div`
@@ -157,7 +162,11 @@ const ServicesGallery = ({ data }) => {
 										key={index}
 										$isPointerDown={isPointerDown}
 									>
-										<MediaStack data={item} />
+										<Link href="/services" passHref>
+											<LinkTag>
+												<MediaStack data={item} />
+											</LinkTag>
+										</Link>
 									</EmblaSlider>
 								))}
 						</EmblaContainer>
