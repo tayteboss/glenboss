@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const TabHeaderTitleWrapper = styled.div`
-	max-width: 570px;
+	max-width: 900px;
 `;
 
 const SecondaryTitle = styled.p`

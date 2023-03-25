@@ -20,7 +20,7 @@ const ContentSectionInner = styled.div`
 `;
 
 const TitleWrapper = styled.div`
-	max-width: 750px;
+	max-width: 1000px;
 	padding-right: 16px;
 `;
 
@@ -60,7 +60,7 @@ const ContentSection = ({ data, handleClick }) => {
 		<ContentSectionWrapper style={{ y: y1 }}>
 			<InnerWrapper>
 				<ContentSectionInner $hasButtons={hasButtons}>
-					<TitleWrapper>
+					<TitleWrapper className="page-header__title-wrapper">
 						{data?.primaryHeading && (
 							<Title>{data?.primaryHeading}</Title>
 						)}

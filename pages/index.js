@@ -16,7 +16,15 @@ const DynamicContactTab = dynamic(() =>
 	import('../components/blocks/ContactTab')
 );
 
-const PageWrapper = styled(motion.div)``;
+const PageWrapper = styled(motion.div)`
+	.page-header {
+		&:first-child {
+			.page-header__title-wrapper {
+				max-width: 750px;
+			}
+		}
+	}
+`;
 
 const Page = ({ data, handleCursorRefresh, pageTransitionVariants }) => {
 	const seoTitle = data?.pageSeo[0]?.title;

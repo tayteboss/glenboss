@@ -456,6 +456,7 @@ export const GlobalStyles = createGlobalStyle`
 				list-style: decimal;
 			}
 		}
+	}
 
 	input:-webkit-autofill,
 	input:-webkit-autofill:hover, 
