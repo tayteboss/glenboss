@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import Marquee from 'react-fast-marquee';
 import { useInView } from 'react-intersection-observer';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
 const PartnersGalleryWrapper = styled.div`
 	position: relative;
@@ -26,11 +27,23 @@ const PartnersGallery = ({
 	setIsHoveredIndex,
 	handleCursorRefresh,
 }) => {
+	const [isMobile, setIsMobile] = useState(false);
+
 	const hasData = data.length > 0;
 
 	const handleCycleComplete = () => {
 		handleCursorRefresh();
 	};
+
+	console.log('isMobile', isMobile);
+
+	useEffect(() => {
+		if (window.innerWidth < 550) {
+			setIsMobile(true);
+		} else {
+			setIsMobile(false);
+		}
+	}, []);
 
 	const { ref, inView } = useInView({
 		triggerOnce: true,
@@ -47,9 +60,8 @@ const PartnersGallery = ({
 		>
 			{hasData && (
 				<Marquee
-					pauseOnHover
 					gradient={false}
-					speed={160}
+					speed={isMobile ? 100 : 200}
 					onCycleComplete={() => handleCycleComplete()}
 				>
 					{data.map((item, index) => (

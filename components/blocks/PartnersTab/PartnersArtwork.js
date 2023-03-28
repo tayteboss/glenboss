@@ -41,8 +41,6 @@ const wrapperVariants = {
 };
 
 const PartnersArtwork = ({ data, index }) => {
-	console.log('data', data[Number(index)]?.media);
-
 	return (
 		<AnimatePresence>
 			{index && (
