@@ -14,7 +14,8 @@ const ContentModalWrapper = styled(motion.div)`
 	width: 70vw;
 	max-width: 950px;
 	z-index: 200;
-	height: calc(var(--vh) * 100);
+	height: 100vh;
+	height: 100lvh;
 	box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
 	overflow-y: auto;
 
