@@ -8,6 +8,7 @@ import Cursor from '../elements/Cursor';
 import useScrolled from '../../hooks/useScrolled';
 import LandingSequence from '../blocks/LandingSequence';
 import PageTransitionCover from '../elements/PageTransitionCover';
+import { NextSeo } from 'next-seo';
 
 export const CursorContext = createContext();
 
@@ -64,6 +65,21 @@ const Layout = ({
 
 	return (
 		<CursorContext.Provider value={{ cursorRefresh, setCursorRefresh }}>
+			{!siteReady && (
+				<NextSeo
+					title="Glen Boss"
+					description="Discover the storied career and extraordinary accomplishments of Glen on the race track and what he’s up to now."
+					openGraph={{
+						images: [
+							{
+								url: 'ogg-image.jpg',
+								width: 800,
+								height: 600,
+							},
+						],
+					}}
+				/>
+			)}
 			{!hasVisited && <LandingSequence siteReady={siteReady} />}
 			{siteReady && (
 				<>
