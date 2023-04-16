@@ -9,7 +9,10 @@ const ServicesTabWrapper = styled.section`
 
 const ServicesTab = ({ data, zIndex }) => {
 	return (
-		<ServicesTabWrapper className="tab-radius tab-wrapper" $zIndex={zIndex}>
+		<ServicesTabWrapper
+			className="performance tab-radius tab-wrapper"
+			$zIndex={zIndex}
+		>
 			<TabHeader data={data?.headingInformation[0]} />
 			<ServicesGallery data={data?.servicesGallery} />
 		</ServicesTabWrapper>

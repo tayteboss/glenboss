@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import { useEffect } from 'react';
 import styled from 'styled-components';
+import MediaStack from '../../elements/MediaStack';
 
 const PartnersArtworkWrapper = styled(motion.div)`
 	position: absolute;
@@ -8,7 +8,19 @@ const PartnersArtworkWrapper = styled(motion.div)`
 	left: 0;
 	height: 100%;
 	width: 100%;
-	background: red;
+	overflow: hidden;
+
+	.video-component-wrapper,
+	& > div {
+		height: 100%;
+		width: 100%;
+	}
+
+	video {
+		object-fit: cover;
+		height: 100%;
+		width: 100%;
+	}
 `;
 
 const wrapperVariants = {
@@ -22,7 +34,7 @@ const wrapperVariants = {
 	visible: {
 		opacity: 1,
 		transition: {
-			duration: 0.3,
+			duration: 0.7,
 			ease: 'easeInOut',
 		},
 	},
@@ -38,7 +50,7 @@ const PartnersArtwork = ({ data, index }) => {
 					animate="visible"
 					exit="hidden"
 				>
-					{data[Number(index)]?.name}
+					<MediaStack data={data[Number(index)]?.media[0]} />
 				</PartnersArtworkWrapper>
 			)}
 		</AnimatePresence>

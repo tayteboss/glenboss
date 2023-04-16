@@ -48,7 +48,7 @@ const PartnerLogos = ({ data, zIndex }) => {
 	return (
 		<PartnerLogosWrapper
 			ref={ref}
-			className={`tab-radius view-element-fade-in ${
+			className={`performance tab-radius view-element-fade-in ${
 				inView ? 'view-element-fade-in--in-view' : ''
 			}`}
 			$zIndex={zIndex}

@@ -21,7 +21,7 @@ const ContactInformation = ({ email, phone, igLink, twLink }) => {
 			<InnerWrapper>
 				<Grid>
 					<ContactCard
-						title="Have a general enquiry?"
+						title="Get in touch"
 						links={[
 							{ title: email, link: `mailto:${email}` },
 							{ title: phone, link: `tel:${phone}` },

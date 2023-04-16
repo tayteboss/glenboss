@@ -13,7 +13,7 @@ const MediaSectionInner = styled.div``;
 
 const MediaSection = ({ data }) => {
 	return (
-		<MediaSectionWrapper className="tab-radius">
+		<MediaSectionWrapper className="performance tab-radius">
 			<MediaSectionInner>
 				<MediaStack data={data?.media[0]} />
 			</MediaSectionInner>

@@ -348,6 +348,10 @@ export const GlobalStyles = createGlobalStyle`
 		}
 	}
 
+	.performance {
+		-webkit-transform: translateZ(0);
+	}
+
 	::placeholder {
 		color: currentcolor;
 		opacity: 1;
@@ -452,6 +456,7 @@ export const GlobalStyles = createGlobalStyle`
 				list-style: decimal;
 			}
 		}
+	}
 
 	input:-webkit-autofill,
 	input:-webkit-autofill:hover, 

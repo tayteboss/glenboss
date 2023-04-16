@@ -9,7 +9,9 @@ import StoryBuilder from '../../components/blocks/StoryBuilder';
 import useNoScroll from '../../hooks/useNoScroll';
 import { getProfilePage } from '../../lib/datocms';
 
-const PageWrapper = styled(motion.div)``;
+const PageWrapper = styled.div`
+	opacity: 1;
+`;
 
 const Page = ({ data, handleCursorRefresh, pageTransitionVariants }) => {
 	const [modalData, setModalData] = useState(false);
@@ -46,12 +48,7 @@ const Page = ({ data, handleCursorRefresh, pageTransitionVariants }) => {
 	}, [modalData]);
 
 	return (
-		<PageWrapper
-			variants={pageTransitionVariants}
-			initial="hidden"
-			animate="visible"
-			exit="hidden"
-		>
+		<PageWrapper>
 			<NextSeo
 				title={seoTitle || 'Glen Boss'}
 				description={seoDescription || ''}

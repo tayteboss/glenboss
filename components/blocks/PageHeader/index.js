@@ -19,7 +19,7 @@ const PageHeader = ({ data, zIndex, handleClick }) => {
 	return (
 		<PageHeaderWrapper
 			ref={ref}
-			className={`view-element-fade-in ${
+			className={`page-header performance view-element-fade-in ${
 				inView ? 'view-element-fade-in--in-view' : ''
 			}`}
 			$zIndex={zIndex}

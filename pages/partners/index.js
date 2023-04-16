@@ -9,7 +9,7 @@ import PartnersList from '../../components/blocks/PartnersList';
 import useNoScroll from '../../hooks/useNoScroll';
 import { getPartners, getPartnersPage } from '../../lib/datocms';
 
-const PageWrapper = styled(motion.div)``;
+const PageWrapper = styled.div``;
 
 const Page = ({
 	data,
@@ -48,12 +48,7 @@ const Page = ({
 	}, [modalData]);
 
 	return (
-		<PageWrapper
-			variants={pageTransitionVariants}
-			initial="hidden"
-			animate="visible"
-			exit="hidden"
-		>
+		<PageWrapper>
 			<NextSeo
 				title={seoTitle || 'Glen Boss'}
 				description={seoDescription || ''}

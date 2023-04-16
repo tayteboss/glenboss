@@ -13,11 +13,14 @@ const PartnersTabWrapper = styled.section`
 	position: relative;
 	z-index: ${(props) => props.$zIndex};
 
-	h1,
-	p {
-		${(props) => props.$isActive ? 'color: var(--colour-white);' : ''}
-
-		transition: all var(--transition-speed-default) var(--transition-ease);
+	.tab-header {
+		h1,
+		p,
+		a {
+			opacity: ${(props) => props.$isActive ? 0 : 1};
+	
+			transition: all var(--transition-speed-default) var(--transition-ease);
+		}
 	}
 `;
 
