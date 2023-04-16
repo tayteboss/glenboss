@@ -35,8 +35,6 @@ const PartnersGallery = ({
 		handleCursorRefresh();
 	};
 
-	console.log('isMobile', isMobile);
-
 	useEffect(() => {
 		if (window.innerWidth < 550) {
 			setIsMobile(true);
