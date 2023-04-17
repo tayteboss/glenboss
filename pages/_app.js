@@ -58,7 +58,7 @@ function App({ Component, pageProps }) {
 					window.addEventListener('load', onPageLoad);
 					return () => window.removeEventListener('load', onPageLoad);
 				}
-			}, 2000);
+			}, 2500);
 
 			const timer2 = setTimeout(() => {
 				setHasVisited(true);

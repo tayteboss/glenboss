@@ -63,10 +63,9 @@ const PartnersGallery = ({
 					onCycleComplete={() => handleCycleComplete()}
 				>
 					{data.map((item, index) => (
-						<Link href={item?.url} passHref>
+						<Link href={item?.url} passHref key={index}>
 							<Title
 								target="_blank"
-								key={index}
 								className="type-extra-large cursor-large-link"
 								onMouseOver={() =>
 									setIsHoveredIndex(index.toString())

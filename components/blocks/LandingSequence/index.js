@@ -13,19 +13,6 @@ const LandingSequenceWrapper = styled(motion.div)`
 	z-index: 200;
 	background: var(--colour-black);
 
-	&::after {
-		content: '';
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: ${(props) => (props.$firstReveal ? 0 : '100vh')};
-		background: var(--colour-white);
-		z-index: 210;
-
-		transition: all 750ms var(--transition-ease);
-	}
-
 	.inner-wrapper {
 		height: 100%;
 		overflow: hidden;
@@ -116,17 +103,8 @@ const fullVariants = {
 };
 
 const LandingSequence = ({ siteReady }) => {
-	const [firstReveal, setFirstReveal] = useState(false);
-
-	useEffect(() => {
-		setTimeout(() => {
-			setFirstReveal(true);
-		}, 300);
-	}, []);
-
 	return (
 		<LandingSequenceWrapper
-			$firstReveal={firstReveal}
 			variants={wrapperVariants}
 			initial="hidden"
 			animate={siteReady ? 'hidden' : 'visible'}
