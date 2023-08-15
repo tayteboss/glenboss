@@ -31,6 +31,8 @@ const Page = ({ data, handleCursorRefresh, pageTransitionVariants }) => {
 		}
 	};
 
+	console.log('data', data);
+
 	useEffect(() => {
 		if (modalData) {
 			useNoScroll(true);
